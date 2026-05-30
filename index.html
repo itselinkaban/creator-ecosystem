@@ -34,21 +34,23 @@ body{
 .profile-avatar{width:64px;height:64px;border-radius:999px;display:flex;align-items:center;justify-content:center;background:var(--surface);border:3px solid var(--rasp);box-shadow:var(--shadow-soft);font-family:var(--mono);font-size:20px;color:var(--ink)}
 
 /* ── TOP NAV ── */
-.topnav{background:var(--bg);border:none;padding:0 0 20px;display:flex;align-items:center;justify-content:flex-start;gap:28px;flex-wrap:nowrap;overflow-x:auto;position:sticky;top:0;z-index:100;box-shadow:none}
+.topnav{background:transparent;border-bottom:1px solid var(--border);padding:0 0 6px;display:flex;align-items:center;justify-content:flex-start;gap:0;flex-wrap:nowrap;overflow-x:auto;position:sticky;top:0;z-index:100}
 .topnav::-webkit-scrollbar{display:none}
-.nav-tabs{position:relative;display:flex;align-items:center;gap:28px;flex-wrap:nowrap;white-space:nowrap}
-.nav-indicator{position:absolute;bottom:0;left:0;height:3px;border-radius:999px;background:var(--rasp);transition:left .25s ease,width .25s ease,transform .25s ease;width:0}
+.nav-tabs{position:relative;display:flex;align-items:center;gap:12px;flex-wrap:nowrap;white-space:nowrap;padding:0}
+.nav-indicator{display:none}
  .nav-item, .ntab{
   font-family:var(--sans);font-size:15px;font-weight:500;
-  padding:8px 14px;border-radius:999px;cursor:pointer;
+  padding:10px 18px;
+  cursor:pointer;
   color:var(--ink3);letter-spacing:-0.01em;
   transition:all .25s ease;
   background:transparent;
   border:0;
   white-space:nowrap;flex-shrink:0;
+  border-radius:999px;
 }
-.nav-item:hover, .ntab:hover{background:rgba(194,1,71,.04);color:var(--ink)}
-.nav-item.active, .ntab.active{color:var(--rasp);transform:translateY(-2px)}
+.nav-item:hover, .ntab:hover{background:rgba(194,1,71,.08);color:var(--ink)}
+.nav-item.active, .ntab.active{color:var(--rasp);background:var(--surface);border-radius:18px 18px 0 0;box-shadow:0 12px 28px rgba(34,27,26,0.08)}
 
 /* ── METRIC ROW ── */
 .metric-row{
@@ -110,6 +112,27 @@ body{
 .platform-card--urdate{--accent:var(--rasp)}
 .platform-card--itseli{--accent:var(--lilac)}
 .platform-card--linkedin{--accent:var(--ocean)}
+.ecosystem-score-card .ct, .score-guide-card .ct{font-size:18px}
+.ecosystem-score-hero{display:flex;align-items:flex-end;gap:12px;margin:18px 0 16px}
+.ecoscore-value{font-family:var(--mono);font-size:72px;line-height:1;color:var(--ink)}
+.ecoscore-emoji{font-size:36px;display:block;margin-bottom:10px}
+.ecosystem-score-card p, .platform-card p{font-size:14px;color:var(--ink2);line-height:1.7;margin:0 0 16px}
+.ecosystem-score-card ul, .score-guide-list{list-style:none;margin:0;padding:0}
+.ecosystem-score-card li{font-size:13px;color:var(--ink3);margin-bottom:10px;line-height:1.6}
+.ecosystem-score-card li strong{color:var(--ink)}
+.score-guide-card{display:flex;flex-direction:column;gap:18px}
+.score-guide-list{display:grid;gap:10px}
+.score-guide-row{display:flex;justify-content:space-between;align-items:center;padding:12px 14px;border-radius:18px;background:var(--surface2);border:1px solid var(--border);font-family:var(--sans);font-size:14px;color:var(--ink)}
+.score-guide-row span:first-child{font-family:var(--mono);font-size:13px;color:var(--ink3)}
+.score-guide-note{font-size:12px;color:var(--ink3);padding:12px 14px;border-radius:18px;background:var(--surface2);border:1px solid var(--border)}
+.score-guide-card .ct{font-family:var(--mono);font-size:20px}
+.score-guide-card .cs{font-size:12px}
+.platform-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.platform-card{padding:28px 24px;min-height:240px}
+.platform-card .platform-name-block{margin-bottom:20px}
+.platform-card .pstat-title{font-family:var(--mono);font-size:11px;color:var(--ink3);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:8px}
+.platform-card .pstat-detail{font-size:14px;color:var(--ink);line-height:1.6;margin-bottom:16px}
+.platform-card .recommendation{margin-top:16px;padding:14px 16px;border-radius:18px;background:var(--surface2);border:1px solid var(--border);font-size:13px;line-height:1.6;color:var(--ink2)}
 
 /* ── CARD HEADER ── */
 .ch{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px}
@@ -323,214 +346,56 @@ body{
      OVERVIEW
 ════════════════════════════════════ -->
 <div id="view-overview" class="panel active">
-  <section class="platform-overview">
-    <div class="platform-overview-header">
-      <h2>Platform overview</h2>
-    </div>
-    <div class="platform-grid">
-      <div class="platform-card platform-card--urdate">
-        <div class="platform-name-block platform-name-block--urdate"><span class="platform-name-text">@urdategurly</span><span class="platform-name-sub">tiktok</span></div>
-        <div class="pstat-val">16.6k</div>
-        <div style="display:flex;justify-content:space-between;margin-top:6px">
-          <span style="font-size:10px;color:var(--ink3)">followers</span>
-          <span style="font-size:10px;color:var(--spring);font-weight:500">+198 ↑ 175%</span>
+  <div class="grid-main" style="grid-template-columns:1.5fr 1fr;gap:24px;padding:0">
+    <div class="col">
+      <div class="card ecosystem-score-card">
+        <div class="ch"><span class="ct">ecosystem score</span><span class="cs">creator operating system</span></div>
+        <div class="ecosystem-score-hero">
+          <span class="ecoscore-value">84</span>
+          <span class="ecoscore-emoji">💄</span>
         </div>
-        <div class="div" style="margin:8px 0 6px"></div>
-        <div class="pstat-grid">
-          <span>views</span><span>179.1k</span>
-          <span>audience</span><span>73% female</span>
-          <span>for you</span><span>60.8%</span>
-        </div>
-      </div>
-      <div class="platform-card platform-card--itseli">
-        <div class="platform-name-block platform-name-block--itseli"><span class="platform-name-text">@itselinkaban</span><span class="platform-name-sub">tiktok alt</span></div>
-        <div class="pstat-val">676</div>
-        <div style="display:flex;justify-content:space-between;margin-top:6px">
-          <span style="font-size:10px;color:var(--ink3)">followers</span>
-          <span style="font-size:10px;color:var(--ink3)">+9 steady</span>
-        </div>
-        <div class="div" style="margin:8px 0 6px"></div>
-        <div class="pstat-grid">
-          <span>views</span><span>13.7k</span>
-          <span>audience</span><span>58% male</span>
-          <span>search</span><span>40.8%</span>
-        </div>
-      </div>
-      <div class="platform-card platform-card--linkedin">
-        <div class="platform-name-block platform-name-block--li"><span class="platform-name-text">linkedin</span><span class="platform-name-sub">professional</span></div>
-        <div class="pstat-val">754</div>
-        <div style="display:flex;justify-content:space-between;margin-top:6px">
-          <span style="font-size:10px;color:var(--ink3)">followers</span>
-          <span style="font-size:10px;color:var(--spring);font-weight:500">↑ 1.8% weekly</span>
-        </div>
-        <div class="div" style="margin:8px 0 6px"></div>
-        <div class="pstat-grid">
-          <span>top post</span><span>325 imp</span>
-          <span>seniority</span><span>35% senior</span>
-          <span>location</span><span>64% jakarta</span>
-        </div>
+        <p>Strong Growth — your creator ecosystem is gaining clarity and momentum with high emotional resonance.</p>
+        <ul>
+          <li><strong>Interpretation</strong> Strategy and feeling are aligned; your audience feels seen and invited.</li>
+          <li><strong>Recommendation</strong> Amplify narrative themes that connect authenticity with aspiration.</li>
+        </ul>
       </div>
     </div>
-  </section>
-  <div class="section-header"><h3 class="section-title">Creator snapshot</h3></div>
-  <div class="metric-row">
-    <div class="metric-pill metric-card">
-      <div class="mpill-lbl">tiktok views · 28d</div>
-      <div class="mpill-val">179.1k</div>
-      <div class="mpill-delta delta-up">↑ 17.2% vs prior period</div>
-    </div>
-    <div class="metric-pill metric-card">
-      <div class="mpill-lbl">linkedin impressions · 7d</div>
-      <div class="mpill-val">746</div>
-      <div class="mpill-delta delta-up">↑ 242% vs prior week</div>
-    </div>
-    <div class="metric-pill metric-card">
-      <div class="mpill-lbl">total followers · all</div>
-      <div class="mpill-val">18.0k</div>
-      <div class="mpill-delta delta-up">↑ net +207 this period</div>
-    </div>
-    <div class="metric-pill metric-card">
-      <div class="mpill-lbl">emotional score</div>
-      <div class="mpill-val" style="color:var(--ocean)">78</div>
-      <div class="mpill-delta delta-neutral">warm &amp; grounded</div>
+    <div class="col">
+      <div class="card score-guide-card">
+        <div class="ch"><span class="ct">score guide</span><span class="cs">read the ecosystem signal</span></div>
+        <div class="score-guide-list">
+          <div class="score-guide-row"><span>90–100</span><span>👠 Momentum Machine</span></div>
+          <div class="score-guide-row"><span>80–89</span><span>💄 Strong Growth</span></div>
+          <div class="score-guide-row"><span>70–79</span><span>🫶 Healthy Foundation</span></div>
+          <div class="score-guide-row"><span>60–69</span><span>🤔 Needs Optimization</span></div>
+          <div class="score-guide-row"><span>&lt;60</span><span>😮‍💨 Intervention Needed</span></div>
+        </div>
+        <div class="score-guide-note">Score formula available in Guidelines.</div>
+      </div>
     </div>
   </div>
 
-  <div class="grid-main">
-    <!-- LEFT -->
-    <div class="col">
-      <div class="card">
-        <div class="ch"><span class="ct">audience age · tiktok</span></div>
-        <div class="abr"><span class="al">18–24</span><div class="at"><div class="af" style="width:23.6%;background:var(--ocean-l)"></div></div><span class="ap">24%</span></div>
-        <div class="abr"><span class="al">25–34</span><div class="at"><div class="af" style="width:55.2%;background:var(--spring)"></div></div><span class="ap">55%</span></div>
-        <div class="abr"><span class="al">35–44</span><div class="at"><div class="af" style="width:23.2%;background:var(--green-l)"></div></div><span class="ap">23%</span></div>
-        <div class="abr"><span class="al">45–54</span><div class="at"><div class="af" style="width:9.6%;background:var(--ink4)"></div></div><span class="ap">10%</span></div>
-        <div class="abr"><span class="al">55+</span><div class="at"><div class="af" style="width:3.5%;background:var(--ink4)"></div></div><span class="ap">4%</span></div>
-        <div style="margin-top:11px;padding:9px 11px;background:var(--ocean-l);border-radius:var(--r2)">
-          <span style="font-size:10.5px;color:var(--ocean)">core cohort: 25–34 dominates all three platforms consistently.</span>
-        </div>
-      </div>
+  <div class="section-header"><h3 class="section-title">Account intelligence</h3></div>
+
+  <div class="platform-grid">
+    <div class="platform-card platform-card--urdate">
+      <div class="platform-name-block platform-name-block--urdate"><span class="platform-name-text">@urdategurly</span><span class="platform-name-sub">tiktok</span></div>
+      <div class="pstat-head"><span class="pstat-title">account score</span><span class="pstat-val">88</span></div>
+      <div class="pstat-detail">High confidence, strong share potential. The audience is leaning into candid relationship and emotional intelligence messaging.</div>
+      <div class="recommendation">Keep the tone bold but grounded. Lean into narrative specificity and gestural vulnerability.</div>
     </div>
-
-    <!-- CENTER -->
-    <div class="col">
-      <div class="card">
-        <div class="ch"><span class="ct">emotional intelligence center</span><span class="cs">audience sentiment</span></div>
-        <div class="hero-ring-wrap">
-          <div class="ring-container">
-            <svg viewBox="0 0 136 136" width="136" height="136" aria-label="Emotional score 78 out of 100">
-              <circle cx="68" cy="68" r="54" fill="none" stroke="rgba(168,153,140,0.15)" stroke-width="9"/>
-              <circle cx="68" cy="68" r="54" fill="none" stroke="var(--ocean)" stroke-width="9"
-                stroke-linecap="round"
-                stroke-dasharray="339.3"
-                stroke-dashoffset="74.6"
-                transform="rotate(-90 68 68)"/>
-            </svg>
-            <div class="ring-inner">
-              <span class="ring-score">78</span>
-              <span class="ring-lbl">/ 100</span>
-            </div>
-          </div>
-          <div class="hero-mood">warm &amp; grounded</div>
-          <div class="hero-sub">high hope · playfulness · emotional safety</div>
-        </div>
-        <div class="div"></div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0 24px">
-          <div>
-            <div style="font-family:var(--mono);font-size:9px;color:var(--spring);letter-spacing:0.08em;margin-bottom:9px">uplifting</div>
-            <div class="mbr"><span class="mn">hopeful</span><div class="mt"><div class="mf" style="width:78%;background:rgba(59,109,17,0.45)"></div></div><span class="mp">78%</span></div>
-            <div class="mbr"><span class="mn">playful</span><div class="mt"><div class="mf" style="width:72%;background:rgba(212,160,23,0.55)"></div></div><span class="mp">72%</span></div>
-            <div class="mbr"><span class="mn">connected</span><div class="mt"><div class="mf" style="width:69%;background:rgba(3,80,99,0.45)"></div></div><span class="mp">69%</span></div>
-            <div class="mbr"><span class="mn">validated</span><div class="mt"><div class="mf" style="width:61%;background:rgba(97,166,247,0.55)"></div></div><span class="mp">61%</span></div>
-            <div class="mbr"><span class="mn">inspired</span><div class="mt"><div class="mf" style="width:55%;background:rgba(130,110,200,0.4)"></div></div><span class="mp">55%</span></div>
-          </div>
-          <div>
-            <div style="font-family:var(--mono);font-size:9px;color:var(--ink3);letter-spacing:0.08em;margin-bottom:9px">processed</div>
-            <div class="mbr"><span class="mn">reflective</span><div class="mt"><div class="mf" style="width:65%;background:rgba(130,110,200,0.3)"></div></div><span class="mp">65%</span></div>
-            <div class="mbr"><span class="mn">confused</span><div class="mt"><div class="mf" style="width:42%;background:rgba(212,160,23,0.3)"></div></div><span class="mp">42%</span></div>
-            <div class="mbr"><span class="mn">fatigued</span><div class="mt"><div class="mf" style="width:24%;background:rgba(255,112,41,0.35)"></div></div><span class="mp">24%</span></div>
-            <div class="mbr"><span class="mn">lonely</span><div class="mt"><div class="mf" style="width:20%;background:rgba(97,166,247,0.35)"></div></div><span class="mp">20%</span></div>
-            <div class="mbr"><span class="mn">overwhelmed</span><div class="mt"><div class="mf" style="width:18%;background:rgba(194,16,71,0.3)"></div></div><span class="mp">18%</span></div>
-          </div>
-        </div>
-        <div style="margin-top:12px;padding:9px 12px;border-radius:var(--r2);background:var(--surface2);border:0.5px solid var(--border)">
-          <span style="font-size:10.5px;color:var(--ink2);font-style:italic;line-height:1.5">processed emotions under 25% signal healthy complexity — the audience trusts this space to hold what's real without it becoming heavy.</span>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="ch"><span class="ct">linkedin impressions · may 2–29</span><span class="cs">daily</span></div>
-        <div class="chart-wrap" style="height:130px">
-          <canvas id="liChart" role="img" aria-label="LinkedIn daily impressions May 2 to May 29, peak on May 25 at 275">LinkedIn impressions: peak 275 on May 25</canvas>
-        </div>
-      </div>
+    <div class="platform-card platform-card--itseli">
+      <div class="platform-name-block platform-name-block--itseli"><span class="platform-name-text">@itselinkaban</span><span class="platform-name-sub">tiktok alt</span></div>
+      <div class="pstat-head"><span class="pstat-title">account score</span><span class="pstat-val">74</span></div>
+      <div class="pstat-detail">Solid foundation with room to sharpen focus. The audience values calm companionship and reflective insight.</div>
+      <div class="recommendation">Double down on trusted storytelling and ritualized content formats to deepen connection.</div>
     </div>
-
-    <!-- RIGHT -->
-    <div class="col">
-      <div class="card">
-        <div class="ch"><span class="ct">content opportunities</span><span class="cs">top 5</span></div>
-        <div class="opp">
-          <span class="opp-idx">01</span>
-          <div class="opp-body">
-            <div class="opp-title">"ciri-ciri orang yang bilang 'aku fine' padahal ga fine" — pov</div>
-            <div class="opp-meta"><span class="chip chip-tg">@urdategurly</span><span class="chip chip-fmt">pov</span></div>
-          </div>
-          <span class="opp-score">94%</span>
-        </div>
-        <div class="opp">
-          <span class="opp-idx">02</span>
-          <div class="opp-body">
-            <div class="opp-title">"the day i realized career grief is real" — cinematic vlog</div>
-            <div class="opp-meta"><span class="chip chip-ek">@itselinkaban</span><span class="chip chip-fmt">vlog</span></div>
-          </div>
-          <span class="opp-score">91%</span>
-        </div>
-        <div class="opp">
-          <span class="opp-idx">03</span>
-          <div class="opp-body">
-            <div class="opp-title">"why effective marketing doesn't sound like marketing"</div>
-            <div class="opp-meta"><span class="chip chip-li">linkedin</span><span class="chip chip-fmt">essay</span></div>
-          </div>
-          <span class="opp-score">89%</span>
-        </div>
-        <div class="opp">
-          <span class="opp-idx">04</span>
-          <div class="opp-body">
-            <div class="opp-title">"kalau kamu terlalu banyak mikir sebelum ngobrol"</div>
-            <div class="opp-meta"><span class="chip chip-tg">@urdategurly</span><span class="chip chip-fmt">talking head</span></div>
-          </div>
-          <span class="opp-score">88%</span>
-        </div>
-        <div class="opp">
-          <span class="opp-idx">05</span>
-          <div class="opp-body">
-            <div class="opp-title">"auditing my creative work: what i kept, what i let go" — ep 2</div>
-            <div class="opp-meta"><span class="chip chip-ek">@itselinkaban</span><span class="chip chip-fmt">audit series</span></div>
-          </div>
-          <span class="opp-score">86%</span>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="ch"><span class="ct">audience voices</span><span class="cs">quote wall</span></div>
-        <div class="quote">
-          <div class="quote-text">"relate banget ini, literally me setiap hari — kenapa lu bisa tau hal-hal kayak gini sih"</div>
-          <div class="quote-meta"><span class="badge badge--tg">@urdategurly</span><span style="color:var(--spring)">♥ high resonance</span></div>
-        </div>
-        <div class="quote">
-          <div class="quote-text">"ini aku tapi aku gaada kata-kata buat ngejelasinnya. makasih udah bilang duluan."</div>
-          <div class="quote-meta"><span class="badge badge--ek">@itselinkaban</span><span style="color:var(--spring)">♥ saved</span></div>
-        </div>
-        <div class="quote">
-          <div class="quote-text">"this is the most honest thing i've seen a marketer say on this platform in months."</div>
-          <div class="quote-meta"><span class="badge badge--li">linkedin</span><span>3 comments</span></div>
-        </div>
-        <div class="quote">
-          <div class="quote-text">"nangis dikit, terus ketawa, terus nangis lagi. itu efeknya nonton konten lu."</div>
-          <div class="quote-meta"><span class="badge badge--tg">@urdategurly</span><span style="color:var(--spring)">♥ peak connection</span></div>
-        </div>
-      </div>
+    <div class="platform-card platform-card--linkedin">
+      <div class="platform-name-block platform-name-block--li"><span class="platform-name-text">linkedin</span><span class="platform-name-sub">professional</span></div>
+      <div class="pstat-head"><span class="pstat-title">account score</span><span class="pstat-val">79</span></div>
+      <div class="pstat-detail">Healthy reach and credibility. Thought leadership is resonating with audience care and strategic clarity.</div>
+      <div class="recommendation">Publish more succinct, concept-driven reflections that make complex ideas feel accessible.</div>
     </div>
   </div>
 </div>
