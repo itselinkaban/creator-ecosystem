@@ -101,15 +101,15 @@ body{
 
 .hero-grid{display:grid;grid-template-columns:1fr 1.5fr 1.5fr;gap:10px;margin-bottom:12px;align-items:stretch}
 .hero-card{display:flex;flex-direction:column;justify-content:space-between;min-height:160px;max-height:160px;overflow:hidden}
-.hero-card.ecosystem-score-card{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;aspect-ratio:1;min-height:auto;max-height:none;position:relative}
-.card.hero-card .ch{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px;position:absolute;top:0;left:0;right:0;width:100%}
-.card.hero-card.ecosystem-score-card .ch{margin-bottom:0;top:24px;padding:0 16px}
-.score-display{display:flex;flex-direction:column;gap:10px;align-items:center;width:100%;justify-content:center}
+.hero-card.ecosystem-score-card{display:flex;flex-direction:column;justify-content:flex-start;align-items:stretch;text-align:center;aspect-ratio:1/1;min-height:auto;max-height:none;overflow:hidden}
+.card.hero-card .ch{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;}
+.card.hero-card.ecosystem-score-card .ch{margin-bottom:8px;}
+.score-display{display:flex;flex-direction:column;gap:4px;align-items:center;width:100%;padding-top:14px;}
 .score-main{display:flex;align-items:baseline;gap:3px;justify-content:center}
-.score-val{font-family:var(--mono);font-size:48px;font-weight:700;color:var(--ink);line-height:1}
-.score-max{font-family:var(--mono);font-size:28px;font-weight:500;color:var(--ink2);line-height:1}
-.score-status{display:flex;align-items:center;gap:6px;font-family:var(--sans);font-size:13px;color:var(--ink);font-weight:500;justify-content:center}
-.score-analysis{font-family:var(--sans);font-size:13px;color:var(--ink2);line-height:1.4;text-align:center}
+.score-val{font-family:var(--mono);font-size:55px;font-weight:700;color:var(--ink);line-height:1}
+.score-max{font-family:var(--mono);font-size:32px;font-weight:500;color:var(--ink2);line-height:1}
+.score-status{display:flex;align-items:center;gap:4px;font-family:var(--sans);font-size:12px;color:var(--ink);font-weight:500;justify-content:center;margin-top:4px}
+.score-analysis{font-family:var(--sans);font-size:10px;color:var(--ink2);line-height:1.35;text-align:center;margin-top:3px}
 .hero-box{padding:8px 10px;border-radius:16px;background:var(--surface2);border:1px solid var(--border);margin-top:8px;font-size:12px;line-height:1.5;color:var(--ink2)}
 .hero-box strong{display:block;font-size:11px;color:var(--ink);margin-bottom:4px}
 .ecoscore-label{font-family:var(--mono);font-size:14px;color:var(--ink);margin-top:5px}
@@ -140,7 +140,7 @@ body{
 .platform-card--urdate{--accent:var(--rasp)}
 .platform-card--itseli{--accent:var(--lilac)}
 .platform-card--linkedin{--accent:var(--ocean)}
-.ecosystem-score-card .ct, .score-guide-card .ct{font-size:17px}
+.ecosystem-score-card .ct, .score-guide-card .ct{font-size:11px}
 .ecosystem-score-hero{display:flex;align-items:flex-end;gap:8px;margin:12px 0 10px}
 .ecoscore-value{font-family:var(--mono);font-size:58px;line-height:1;color:var(--ink)}
 .ecoscore-emoji{font-size:30px;display:block;margin-bottom:8px}
@@ -337,6 +337,31 @@ body{
 .platform-name-block--li{background:var(--ocean-l)}
 .platform-name-text{font-family:var(--mono);font-size:12px;font-weight:700;color:var(--ink);letter-spacing:-0.01em}
 .platform-name-sub{font-family:var(--sans);font-size:10px;color:var(--ink3);font-weight:500}
+
+/* ── RECOMMENDATION BOX ── */
+.recommendation-box{
+  padding:8px 10px;
+  border-radius:16px;
+  background:rgba(194,16,71,0.07);
+  border:1px solid rgba(194,16,71,0.18);
+  margin-top:14px;
+  text-align:left;
+}
+.recommendation-box-label{
+  display:block;
+  font-family:var(--sans);
+  font-size:11px;
+  font-weight:700;
+  color:var(--rasp);
+  margin-bottom:4px;
+}
+.recommendation-box-text{
+  font-family:var(--sans);
+  font-size:10px;
+  color:var(--ink2);
+  line-height:1.3;
+}
+
 </style>
 </head>
 <body>
@@ -384,6 +409,10 @@ body{
         <div class="score-main"><span class="score-val">84</span><span class="score-max">/100</span></div>
         <div class="score-status">💄 <span>Strong Growth</span></div>
         <div class="score-analysis">Your creator voice is resonant and gaining momentum.</div>
+        <div class="recommendation-box">
+          <span class="recommendation-box-label">Recommendations</span>
+          <span class="recommendation-box-text">Post 3× this week — shares are your fastest-growing metric (+47.9%). Lean into hyper-specific Indonesian observations on @urdategurly and one LinkedIn essay with personal framing.</span>
+        </div>
       </div>
     </div>
     <div class="card hero-card platform-overview-card">
