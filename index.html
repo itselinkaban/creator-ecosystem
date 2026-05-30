@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=1440">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>elin creator ecosystem</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -41,19 +41,19 @@ body{
   font-family:var(--sans);
   background:var(--bg);
   color:var(--ink);
-  font-size:15px;
-  line-height:1.6;
+  font-size:13px;
+  line-height:1.5;
   min-height:100vh;
 }
 
 /* ── SHELL ── */
-.shell{display:flex;flex-direction:column;min-height:100vh;max-width:1500px;margin:0 auto;padding:32px 40px;width:100%}
+.shell{display:flex;flex-direction:column;min-height:100vh;max-width:1440px;margin:0 auto;padding:20px 28px;width:100%}
 
 /* ── SITE HEADER ── */
 .dashboard-header{display:flex;flex-direction:column;gap:24px;margin-bottom:40px}
 .header-top{display:flex;justify-content:space-between;align-items:flex-start;gap:32px}
 .welcome-message{font-family:var(--sans);font-size:14px;font-weight:500;color:var(--ink2);margin-bottom:8px}
-.brand-block h1{font-family:var(--mono);font-size:42px;font-weight:700;line-height:1.1;letter-spacing:-0.02em;color:var(--ink);margin:0}
+.brand-block h1{font-family:var(--mono);font-size:30px;font-weight:700;line-height:1.1;letter-spacing:-0.02em;color:var(--ink);margin:0}
 .last-updated{margin-top:12px;font-family:var(--mono);font-size:13px;color:var(--ink3)}
 .profile-wrapper{flex-shrink:0}
 .profile-avatar{width:64px;height:64px;border-radius:999px;display:flex;align-items:center;justify-content:center;background:var(--surface);border:3px solid var(--rasp);box-shadow:var(--shadow-soft);font-family:var(--mono);font-size:20px;color:var(--ink)}
@@ -78,19 +78,19 @@ body{
 /* ── METRIC ROW ── */
 .metric-row{
   display:grid;grid-template-columns:repeat(4,1fr);
-  gap:18px;padding:0 0 18px;
+  gap:12px;padding:0 0 14px;
 }
  .metric-card, .metric-pill{
   background:var(--surface);
   border:1px solid var(--border);
   border-radius:var(--r2);
-  padding:18px 20px;
+  padding:14px 16px;
   box-shadow:var(--shadow-soft);
   transition:all .25s ease;
 }
 .metric-card:hover, .metric-pill:hover{transform:translateY(-2px);box-shadow:var(--shadow-hover)}
 .mpill-lbl{font-family:var(--sans);font-size:14px;font-weight:500;color:var(--ink2);margin-bottom:8px;letter-spacing:0.01em}
-.mpill-val{font-family:var(--sans);font-size:48px;font-weight:700;color:var(--ink);line-height:1}
+.mpill-val{font-family:var(--sans);font-size:30px;font-weight:700;color:var(--ink);line-height:1}
 .mpill-delta{font-family:var(--sans);font-size:13px;color:var(--ink2);margin-top:8px}
 .delta-up{color:var(--spring)}
 .delta-dn{color:var(--rasp)}
@@ -100,8 +100,8 @@ body{
 .grid-main{
   display:grid;
   grid-template-columns:1fr 1.5fr 1fr;
-  gap:14px;
-  padding:16px 32px 32px;
+  gap:12px;
+  padding:14px 0 24px;
   align-items:start;
 }
 .col{display:flex;flex-direction:column;gap:14px}
@@ -112,7 +112,7 @@ body{
   background:var(--surface);
   border:1px solid var(--border);
   border-radius:var(--card-r);
-  padding:24px;
+  padding:18px 20px;
   box-shadow:var(--shadow-soft);
   transition:all .25s ease;
 }
