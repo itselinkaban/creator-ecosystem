@@ -35,37 +35,37 @@ html,body{width:100%;height:100%;overflow-x:hidden}
     0 4px 16px rgba(0,0,0,.08),
     0 8px 24px rgba(0,0,0,.05);
   --mono:'Space Mono',monospace;--sans:'Plus Jakarta Sans',sans-serif;
-  --card-r:40px;--r:14px;--r2:10px;
+  --card-r:40px;--r:16px;--r2:16px;--card-p:24px;
 }
 body{
   font-family:var(--sans);
   background:var(--bg);
   color:var(--ink);
-  font-size:12px;
-  line-height:1.5;
+  font-size:15px;
+  line-height:1.6;
   min-height:100vh;
 }
 
 /* ── SHELL ── */
-.shell{display:flex;flex-direction:column;min-height:100vh;max-width:1440px;margin:0 auto;padding:16px 24px;width:100%}
+.shell{display:flex;flex-direction:column;min-height:100vh;max-width:1500px;margin:0 auto;padding:32px 40px;width:100%}
 
 /* ── SITE HEADER ── */
-.dashboard-header{display:flex;flex-direction:column;gap:12px;margin-bottom:20px}
+.dashboard-header{display:flex;flex-direction:column;gap:24px;margin-bottom:40px}
 .header-top{display:flex;justify-content:space-between;align-items:flex-start;gap:32px}
-.welcome-message{font-family:var(--sans);font-size:11px;font-weight:500;color:var(--ink2);margin-bottom:4px}
-.brand-block h1{font-family:var(--mono);font-size:24px;font-weight:700;line-height:1.1;letter-spacing:-0.02em;color:var(--ink);margin:0}
-.last-updated{margin-top:6px;font-family:var(--mono);font-size:10px;color:var(--ink3)}
+.welcome-message{font-family:var(--sans);font-size:14px;font-weight:500;color:var(--ink2);margin-bottom:8px}
+.brand-block h1{font-family:var(--mono);font-size:42px;font-weight:700;line-height:1.1;letter-spacing:-0.02em;color:var(--ink);margin:0}
+.last-updated{margin-top:12px;font-family:var(--mono);font-size:13px;color:var(--ink3)}
 .profile-wrapper{flex-shrink:0}
-.profile-avatar{width:44px;height:44px;border-radius:999px;display:flex;align-items:center;justify-content:center;background:var(--surface);border:3px solid var(--rasp);box-shadow:var(--shadow-soft);font-family:var(--mono);font-size:14px;color:var(--ink)}
+.profile-avatar{width:64px;height:64px;border-radius:999px;display:flex;align-items:center;justify-content:center;background:var(--surface);border:3px solid var(--rasp);box-shadow:var(--shadow-soft);font-family:var(--mono);font-size:20px;color:var(--ink)}
 
 /* ── TOP NAV ── */
-.topnav{background:var(--bg);border:none;padding:0;display:flex;align-items:center;justify-content:flex-start;gap:28px;flex-wrap:nowrap;overflow-x:auto;position:sticky;top:0;z-index:100;box-shadow:none}
+.topnav{background:var(--bg);border:none;padding:0 0 20px;display:flex;align-items:center;justify-content:flex-start;gap:28px;flex-wrap:nowrap;overflow-x:auto;position:sticky;top:0;z-index:100;box-shadow:none}
 .topnav::-webkit-scrollbar{display:none}
-.nav-tabs{position:relative;display:flex;align-items:center;gap:16px;flex-wrap:nowrap;white-space:nowrap}
+.nav-tabs{position:relative;display:flex;align-items:center;gap:28px;flex-wrap:nowrap;white-space:nowrap}
 .nav-indicator{position:absolute;bottom:0;left:0;height:3px;border-radius:999px;background:var(--rasp);transition:left .25s ease,width .25s ease,transform .25s ease;width:0}
  .nav-item, .ntab{
-  font-family:var(--sans);font-size:12px;font-weight:500;
-  padding:5px 12px;border-radius:999px;cursor:pointer;
+  font-family:var(--sans);font-size:15px;font-weight:500;
+  padding:8px 14px;border-radius:999px;cursor:pointer;
   color:var(--ink3);letter-spacing:-0.01em;
   transition:all .25s ease;
   background:transparent;
@@ -78,20 +78,20 @@ body{
 /* ── METRIC ROW ── */
 .metric-row{
   display:grid;grid-template-columns:repeat(4,1fr);
-  gap:10px;padding:0 0 12px;
+  gap:18px;padding:0 0 18px;
 }
  .metric-card, .metric-pill{
   background:var(--surface);
   border:1px solid var(--border);
-  border-radius:var(--r2);
-  padding:12px 16px;
+  border-radius:16px;
+  padding:14px 16px;
   box-shadow:var(--shadow-soft);
   transition:all .25s ease;
 }
 .metric-card:hover, .metric-pill:hover{transform:translateY(-2px);box-shadow:var(--shadow-hover)}
-.mpill-lbl{font-family:var(--sans);font-size:11px;font-weight:500;color:var(--ink2);margin-bottom:4px;letter-spacing:0.01em}
-.mpill-val{font-family:var(--sans);font-size:26px;font-weight:700;color:var(--ink);line-height:1}
-.mpill-delta{font-family:var(--sans);font-size:11px;color:var(--ink2);margin-top:4px}
+.mpill-lbl{font-family:var(--sans);font-size:14px;font-weight:500;color:var(--ink2);margin-bottom:8px;letter-spacing:0.01em}
+.mpill-val{font-family:var(--sans);font-size:48px;font-weight:700;color:var(--ink);line-height:1}
+.mpill-delta{font-family:var(--sans);font-size:13px;color:var(--ink2);margin-top:8px}
 .delta-up{color:var(--spring)}
 .delta-dn{color:var(--rasp)}
 .delta-neutral{color:var(--ink2)}
@@ -100,8 +100,8 @@ body{
 .grid-main{
   display:grid;
   grid-template-columns:1fr 1.5fr 1fr;
-  gap:10px;
-  padding:12px 0 20px;
+  gap:14px;
+  padding:16px 32px 32px;
   align-items:start;
 }
 .col{display:flex;flex-direction:column;gap:14px}
@@ -111,25 +111,25 @@ body{
 .card{
   background:var(--surface);
   border:1px solid var(--border);
-  border-radius:var(--card-r);
-  padding:16px 18px;
+  border-radius:40px;
+  padding:24px;
   box-shadow:var(--shadow-soft);
   transition:all .25s ease;
 }
 .card:hover{transform:translateY(-2px);box-shadow:var(--shadow-hover)}
 
-.section-header{margin:18px 0 10px}
-.section-title{font-family:var(--mono);font-size:16px;font-weight:600;color:var(--ink);margin:0}
-.platform-overview{background:var(--surface);border:1px solid var(--border);border-radius:24px;padding:18px;box-shadow:var(--shadow-soft);margin-bottom:18px}
+.section-header{margin:34px 0 18px}
+.section-title{font-family:var(--mono);font-size:24px;font-weight:600;color:var(--ink);margin:0}
+.platform-overview{background:var(--surface);border:1px solid var(--border);border-radius:40px;padding:24px;box-shadow:var(--shadow-soft);margin-bottom:20px}
 .platform-overview-header{margin-bottom:24px}
-.platform-overview h2{font-family:var(--mono);font-size:16px;font-weight:600;color:var(--ink);margin:0}
-.platform-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.platform-card{position:relative;flex:1 1 0;background:var(--surface);border:1px solid var(--border);border-radius:var(--card-r);padding:14px 16px;box-shadow:var(--shadow-soft);transition:all .25s ease;overflow:hidden}
-.platform-card::before{content:'';position:absolute;top:0;left:0;width:70px;height:4px;border-bottom-left-radius:999px;border-top-right-radius:999px;background:var(--accent)}
+.platform-overview h2{font-family:var(--mono);font-size:24px;font-weight:600;color:var(--ink);margin:0}
+.platform-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.platform-card{position:relative;flex:1 1 0;background:var(--bg);border:1px solid var(--border);border-radius:16px;padding:16px;box-shadow:none;transition:all .25s ease;overflow:hidden}
+.platform-card::before{display:none}
 .platform-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-hover)}
-.platform-card .pstat-head{margin-bottom:8px;display:flex;justify-content:space-between;align-items:center}
-.platform-card .pstat-val{font-family:var(--sans);font-size:22px;font-weight:700;color:var(--ink);line-height:1;margin-top:4px}
-.platform-card .pstat-grid span{font-size:11px}
+.platform-card .pstat-head{margin-bottom:14px;display:flex;justify-content:space-between;align-items:center}
+.platform-card .pstat-val{font-family:var(--sans);font-size:32px;font-weight:700;color:var(--ink);line-height:1;margin-top:4px}
+.platform-card .pstat-grid span{font-size:13px}
 .platform-card .pstat-grid span:nth-child(odd){color:var(--ink3)}
 .platform-card .pstat-grid span:nth-child(even){color:var(--ink);font-weight:500;text-align:right}
 .platform-card--urdate{--accent:var(--rasp)}
@@ -137,7 +137,7 @@ body{
 .platform-card--linkedin{--accent:var(--ocean)}
 
 /* ── CARD HEADER ── */
-.ch{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:12px}
+.ch{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px}
 .ct{font-family:var(--mono);font-size:20px;font-weight:500;color:var(--ink);letter-spacing:-0.02em}
 .cs{
   font-family:var(--sans);font-size:13px;color:var(--ink3);
@@ -299,6 +299,18 @@ body{
 .theme-head{font-family:var(--mono);font-size:9.5px;margin-bottom:4px;letter-spacing:0.04em}
 .theme-text{font-size:11px;color:var(--ink);line-height:1.5}
 .theme-plat{display:flex;gap:5px;margin-top:6px}
+
+/* ── PLATFORM NAME BLOCK ── */
+.platform-name-block{
+  display:flex;flex-direction:column;gap:2px;
+  padding:10px 14px;border-radius:12px;
+  margin-bottom:12px;
+}
+.platform-name-block--urdate{background:var(--rasp-l)}
+.platform-name-block--itseli{background:var(--lilac-l)}
+.platform-name-block--li{background:var(--ocean-l)}
+.platform-name-text{font-family:var(--mono);font-size:12px;font-weight:700;color:var(--ink);letter-spacing:-0.01em}
+.platform-name-sub{font-family:var(--sans);font-size:10px;color:var(--ink3);font-weight:500}
 </style>
 </head>
 <body>
@@ -342,7 +354,7 @@ body{
     </div>
     <div class="platform-grid">
       <div class="platform-card platform-card--urdate">
-        <div class="pstat-head"><span class="pstat-name">@urdategurly</span><span class="badge badge--tg">tiktok</span></div>
+        <div class="platform-name-block platform-name-block--urdate"><span class="platform-name-text">@urdategurly</span><span class="platform-name-sub">tiktok</span></div>
         <div class="pstat-val">16.6k</div>
         <div style="display:flex;justify-content:space-between;margin-top:6px">
           <span style="font-size:10px;color:var(--ink3)">followers</span>
@@ -356,7 +368,7 @@ body{
         </div>
       </div>
       <div class="platform-card platform-card--itseli">
-        <div class="pstat-head"><span class="pstat-name">@itselinkaban</span><span class="badge badge--ek">alt</span></div>
+        <div class="platform-name-block platform-name-block--itseli"><span class="platform-name-text">@itselinkaban</span><span class="platform-name-sub">tiktok alt</span></div>
         <div class="pstat-val">676</div>
         <div style="display:flex;justify-content:space-between;margin-top:6px">
           <span style="font-size:10px;color:var(--ink3)">followers</span>
@@ -370,7 +382,7 @@ body{
         </div>
       </div>
       <div class="platform-card platform-card--linkedin">
-        <div class="pstat-head"><span class="pstat-name">linkedin</span><span class="badge badge--li">professional</span></div>
+        <div class="platform-name-block platform-name-block--li"><span class="platform-name-text">linkedin</span><span class="platform-name-sub">professional</span></div>
         <div class="pstat-val">754</div>
         <div style="display:flex;justify-content:space-between;margin-top:6px">
           <span style="font-size:10px;color:var(--ink3)">followers</span>
