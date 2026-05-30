@@ -22,14 +22,14 @@ body{
 }
 
 /* ── SHELL ── */
-.shell{display:flex;flex-direction:column;min-height:100vh;max-width:1500px;margin:0 auto;padding:32px 40px;width:100%}
+.shell{display:flex;flex-direction:column;min-height:100vh;max-width:1500px;margin:0 auto;padding:22px 32px;width:100%}
 
 /* ── SITE HEADER ── */
-.dashboard-header{display:flex;flex-direction:column;gap:24px;margin-bottom:40px}
-.header-top{display:flex;justify-content:space-between;align-items:flex-start;gap:32px}
+.dashboard-header{display:flex;flex-direction:column;gap:16px;margin-bottom:28px}
+.header-top{display:flex;justify-content:space-between;align-items:flex-start;gap:24px}
 .welcome-message{font-family:var(--sans);font-size:14px;font-weight:500;color:var(--ink2);margin-bottom:8px}
-.brand-block h1{font-family:var(--mono);font-size:42px;font-weight:700;line-height:1.1;letter-spacing:-0.02em;color:var(--ink);margin:0}
-.last-updated{margin-top:12px;font-family:var(--mono);font-size:13px;color:var(--ink3)}
+.brand-block h1{font-family:var(--mono);font-size:56px;font-weight:700;line-height:1.05;letter-spacing:-0.02em;color:var(--ink);margin:0}
+.last-updated{margin-top:10px;font-family:var(--mono);font-size:13px;color:var(--ink3)}
 .profile-wrapper{flex-shrink:0}
 .profile-avatar{width:64px;height:64px;border-radius:999px;display:flex;align-items:center;justify-content:center;background:var(--surface);border:3px solid var(--rasp);box-shadow:var(--shadow-soft);font-family:var(--mono);font-size:20px;color:var(--ink)}
 
@@ -77,26 +77,41 @@ body{
 .grid-main{
   display:grid;
   grid-template-columns:1fr 1.5fr 1fr;
-  gap:14px;
-  padding:16px 32px 32px;
+  gap:10px;
+  padding:12px 24px 24px;
   align-items:start;
 }
-.col{display:flex;flex-direction:column;gap:14px}
-.col-wide{display:flex;flex-direction:column;gap:14px;grid-column:span 2}
+.col{display:flex;flex-direction:column;gap:10px}
+.col-wide{display:flex;flex-direction:column;gap:10px;grid-column:span 2}
 
 /* ── CARD ── */
 .card{
   background:var(--surface);
   border:1px solid var(--border);
   border-radius:40px;
-  padding:24px;
+  padding:18px;
   box-shadow:var(--shadow-soft);
   transition:all .25s ease;
 }
 .card:hover{transform:translateY(-2px);box-shadow:var(--shadow-hover)}
 
-.section-header{margin:34px 0 18px}
-.section-title{font-family:var(--mono);font-size:24px;font-weight:600;color:var(--ink);margin:0}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:18px;align-items:stretch}
+.hero-card{display:flex;flex-direction:column;justify-content:space-between;min-height:260px;max-height:260px;overflow:hidden}
+.hero-box{padding:12px 14px;border-radius:18px;background:var(--surface2);border:1px solid var(--border);margin-top:12px;font-size:14px;line-height:1.6;color:var(--ink2)}
+.hero-box strong{display:block;font-size:13px;color:var(--ink);margin-bottom:6px}
+.ecoscore-label{font-family:var(--mono);font-size:18px;color:var(--ink);margin-top:6px}
+.summary-list{display:flex;flex-direction:column;gap:10px}
+.summary-row{display:grid;grid-template-columns:1.4fr 0.8fr 0.8fr 0.8fr;gap:10px;align-items:center;padding:12px 14px;border-radius:18px;background:var(--surface2);border:1px solid var(--border);font-family:var(--sans);font-size:14px;color:var(--ink)}
+.summary-row span:first-child{font-family:var(--mono);color:var(--ink3)}
+.summary-row span:nth-child(2){font-weight:700;text-align:right}
+.summary-row span:nth-child(3){text-align:right;color:var(--ink2)}
+.growth{font-weight:700;text-align:right}
+.growth-up{color:var(--spring)}
+.growth-flat{color:var(--ink3)}
+.chita-list{display:flex;flex-direction:column;gap:10px}
+
+.section-header{margin:24px 0 14px}
+.section-title{font-family:var(--mono);font-size:32px;font-weight:600;color:var(--ink);margin:0}
 .platform-overview{background:var(--surface);border:1px solid var(--border);border-radius:40px;padding:24px;box-shadow:var(--shadow-soft);margin-bottom:20px}
 .platform-overview-header{margin-bottom:24px}
 .platform-overview h2{font-family:var(--mono);font-size:24px;font-weight:600;color:var(--ink);margin:0}
@@ -338,6 +353,7 @@ body{
     <div class="ntab nav-item" onclick="switchView('brands',this)">brand matches</div>
     <div class="ntab nav-item" onclick="switchView('analytics',this)">analytics</div>
     <div class="ntab nav-item" onclick="switchView('brain',this)">brand brain</div>
+    <div class="ntab nav-item" onclick="switchView('guidelines',this)">guidelines</div>
     <div class="nav-indicator"></div>
   </div>
 </nav>
@@ -346,56 +362,56 @@ body{
      OVERVIEW
 ════════════════════════════════════ -->
 <div id="view-overview" class="panel active">
-  <div class="grid-main" style="grid-template-columns:1.5fr 1fr;gap:24px;padding:0">
-    <div class="col">
-      <div class="card ecosystem-score-card">
-        <div class="ch"><span class="ct">ecosystem score</span><span class="cs">creator operating system</span></div>
+  <div class="hero-grid">
+    <div class="card hero-card ecosystem-score-card">
+      <div class="ch"><span class="ct">ecosystem score</span><span class="cs">creator operating system</span></div>
+      <div>
         <div class="ecosystem-score-hero">
           <span class="ecoscore-value">84</span>
           <span class="ecoscore-emoji">💄</span>
         </div>
-        <p>Strong Growth — your creator ecosystem is gaining clarity and momentum with high emotional resonance.</p>
-        <ul>
-          <li><strong>Interpretation</strong> Strategy and feeling are aligned; your audience feels seen and invited.</li>
-          <li><strong>Recommendation</strong> Amplify narrative themes that connect authenticity with aspiration.</li>
-        </ul>
+        <div class="ecoscore-label">Strong Growth</div>
+      </div>
+      <div class="hero-box"><strong>Insight</strong>Your creator ecosystem is gaining clarity and momentum with high emotional resonance.</div>
+      <div class="hero-box"><strong>Recommended action</strong>Amplify narrative themes that link aspiration with emotional honesty.</div>
+    </div>
+    <div class="card hero-card platform-overview-card">
+      <div class="ch"><span class="ct">platform overview</span><span class="cs">compact health</span></div>
+      <div class="summary-list">
+        <div class="summary-row"><span>@urdategurly · tiktok</span><span>88</span><span>16.6k</span><span class="growth growth-up">+175%</span></div>
+        <div class="summary-row"><span>@itselinkaban · tiktok alt</span><span>74</span><span>676</span><span class="growth growth-up">+9</span></div>
+        <div class="summary-row"><span>linkedin · professional</span><span>79</span><span>754</span><span class="growth growth-up">+1.8%</span></div>
       </div>
     </div>
-    <div class="col">
-      <div class="card score-guide-card">
-        <div class="ch"><span class="ct">score guide</span><span class="cs">read the ecosystem signal</span></div>
-        <div class="score-guide-list">
-          <div class="score-guide-row"><span>90–100</span><span>👠 Momentum Machine</span></div>
-          <div class="score-guide-row"><span>80–89</span><span>💄 Strong Growth</span></div>
-          <div class="score-guide-row"><span>70–79</span><span>🫶 Healthy Foundation</span></div>
-          <div class="score-guide-row"><span>60–69</span><span>🤔 Needs Optimization</span></div>
-          <div class="score-guide-row"><span>&lt;60</span><span>😮‍💨 Intervention Needed</span></div>
-        </div>
-        <div class="score-guide-note">Score formula available in Guidelines.</div>
+    <div class="card hero-card chita-card">
+      <div class="ch"><span class="ct">🐆 chita's corner</span><span class="cs">unfiltered signal</span></div>
+      <div class="chita-list">
+        <div class="hero-box"><strong>Delusion Meter</strong><span style="font-family:var(--mono);font-size:28px;color:var(--rasp)">52 / 100</span></div>
+        <div class="hero-box"><strong>Tiny widget</strong>Calls out the thing no one else is naming.</div>
+        <div class="hero-box"><strong>Unsolicited opinion</strong>"The dashboard is finished. The content is not."</div>
       </div>
     </div>
   </div>
 
-  <div class="section-header"><h3 class="section-title">Account intelligence</h3></div>
-
-  <div class="platform-grid">
-    <div class="platform-card platform-card--urdate">
-      <div class="platform-name-block platform-name-block--urdate"><span class="platform-name-text">@urdategurly</span><span class="platform-name-sub">tiktok</span></div>
-      <div class="pstat-head"><span class="pstat-title">account score</span><span class="pstat-val">88</span></div>
-      <div class="pstat-detail">High confidence, strong share potential. The audience is leaning into candid relationship and emotional intelligence messaging.</div>
-      <div class="recommendation">Keep the tone bold but grounded. Lean into narrative specificity and gestural vulnerability.</div>
-    </div>
-    <div class="platform-card platform-card--itseli">
-      <div class="platform-name-block platform-name-block--itseli"><span class="platform-name-text">@itselinkaban</span><span class="platform-name-sub">tiktok alt</span></div>
-      <div class="pstat-head"><span class="pstat-title">account score</span><span class="pstat-val">74</span></div>
-      <div class="pstat-detail">Solid foundation with room to sharpen focus. The audience values calm companionship and reflective insight.</div>
-      <div class="recommendation">Double down on trusted storytelling and ritualized content formats to deepen connection.</div>
-    </div>
-    <div class="platform-card platform-card--linkedin">
-      <div class="platform-name-block platform-name-block--li"><span class="platform-name-text">linkedin</span><span class="platform-name-sub">professional</span></div>
-      <div class="pstat-head"><span class="pstat-title">account score</span><span class="pstat-val">79</span></div>
-      <div class="pstat-detail">Healthy reach and credibility. Thought leadership is resonating with audience care and strategic clarity.</div>
-      <div class="recommendation">Publish more succinct, concept-driven reflections that make complex ideas feel accessible.</div>
+  <div class="section-header"><h3 class="section-title">Social Listening</h3></div>
+  <div class="grid-main" style="grid-template-columns:1fr;">
+    <div class="col">
+      <div class="card">
+        <div class="ch"><span class="ct">audience voices</span><span class="cs">signal first</span></div>
+        <div class="quote">
+          <div class="quote-text">"she gets it" — concise validation from the core cohort.</div>
+          <div class="quote-meta"><span class="badge badge--tg">@urdategurly</span><span style="color:var(--spring)">high resonance</span></div>
+        </div>
+        <div class="quote">
+          <div class="quote-text">"finally someone said this" — audience relief and recognition.
+          </div>
+          <div class="quote-meta"><span class="badge badge--ek">@itselinkaban</span><span style="color:var(--spring)">saved</span></div>
+        </div>
+        <div class="quote">
+          <div class="quote-text">"this feels too real" — the emotional signal is clear.</div>
+          <div class="quote-meta"><span class="badge badge--li">linkedin</span><span>3 comments</span></div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -851,6 +867,39 @@ body{
         <div class="sr"><span class="sk">sustainability score</span><span class="sv" style="color:var(--ocean)">82 / 100</span></div>
         <div class="sr"><span class="sk">audience trust signal</span><span class="sv sv-up">high</span></div>
         <div class="sr"><span class="sk">burnout risk flag</span><span class="sv" style="color:var(--spring)">low</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════
+     GUIDELINES
+════════════════════════════════════ -->
+<div id="view-guidelines" class="panel">
+  <div class="section-header"><h3 class="section-title">Guidelines</h3></div>
+  <div class="grid-main" style="grid-template-columns:1fr 1fr;gap:18px;padding:0">
+    <div class="col">
+      <div class="card score-guide-card">
+        <div class="ch"><span class="ct">ecosystem score</span><span class="cs">what it means</span></div>
+        <div class="score-guide-list">
+          <div class="score-guide-row"><span>90–100</span><span>👠 Momentum Machine</span></div>
+          <div class="score-guide-row"><span>80–89</span><span>💄 Strong Growth</span></div>
+          <div class="score-guide-row"><span>70–79</span><span>🫶 Healthy Foundation</span></div>
+          <div class="score-guide-row"><span>60–69</span><span>🤔 Needs Optimization</span></div>
+          <div class="score-guide-row"><span>&lt;60</span><span>😮‍💨 Intervention Needed</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card">
+        <div class="ch"><span class="ct">scoring logic</span><span class="cs">formula + methodology</span></div>
+        <p>The ecosystem score combines account health, audience sentiment, and cross-platform momentum into one unified creator signal.</p>
+        <ul>
+          <li><strong>Account score</strong> measures content clarity, engagement, and relative platform growth.</li>
+          <li><strong>Audience signal</strong> measures emotional intelligence, trust resonance, and quote-level reaction.</li>
+          <li><strong>Momentum</strong> measures growth rate, share potential, and consistency across platforms.</li>
+        </ul>
+        <div class="score-guide-note">The full formula, interpretation ranges, and methodology live here for review and reference.</div>
       </div>
     </div>
   </div>
