@@ -99,12 +99,37 @@ body{
 }
 .card:hover{transform:translateY(-2px);box-shadow:var(--shadow-hover)}
 
-.hero-grid{display:grid;grid-template-columns:1fr 2.8fr;gap:10px;margin-bottom:12px;align-items:stretch}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto;gap:10px;margin-bottom:12px;align-items:start}
+.hero-grid .hero-col{display:flex;flex-direction:column;gap:10px}
+.hero-grid .hero-col:nth-child(1){grid-row:1/3}
+.hero-grid .hero-col:nth-child(2){grid-row:1/2}
+.hero-grid .hero-col:nth-child(3){grid-row:2/3}
 .hero-card{display:flex;flex-direction:column;justify-content:space-between;min-height:200px;overflow:hidden}
-.hero-card.ecosystem-score-card{display:flex;flex-direction:column;justify-content:flex-start;align-items:stretch;text-align:center;aspect-ratio:1/1;min-height:auto;max-height:none;overflow:hidden}
+.hero-card.ecosystem-score-card{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;aspect-ratio:1/1;min-height:110px;max-height:none;overflow:hidden}
 .card.hero-card .ch{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;}
 .card.hero-card.ecosystem-score-card .ch{margin-bottom:8px;}
-.score-display{display:flex;flex-direction:column;gap:4px;align-items:center;width:100%;padding-top:14px;}
+.score-display{display:flex;flex-direction:column;gap:4px;align-items:center;width:100%;padding-top:0;}
+.audience-energy-card{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;min-height:110px}
+.audience-energy-score{position:relative;width:110px;height:110px;border-radius:50%;background:linear-gradient(180deg, rgba(3,80,99,0.15), rgba(3,80,99,0.08));display:flex;align-items:center;justify-content:center;margin:0 auto 8px;box-shadow:0 18px 35px rgba(0,0,0,.06);overflow:hidden;border:2px solid rgba(3,80,99,.15)}
+.audience-energy-score::before{content:'';position:absolute;inset:12px;border-radius:50%;background:rgba(3,80,99,.08)}
+.audience-energy-emoji{position:relative;font-size:52px;animation:float-card-emoji 5s ease-in-out infinite;z-index:1;display:block}
+.audience-energy-label{font-family:var(--sans);font-size:11px;color:var(--ink);font-weight:600;margin-bottom:6px}
+.audience-energy-desc{font-family:var(--sans);font-size:10px;color:var(--ink2);line-height:1.4;margin-bottom:8px}
+.audience-energy-analysis{background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:8px 10px;font-size:10px;color:var(--ink2);line-height:1.4;margin-top:auto}
+.audience-energy-analysis-title{font-family:var(--mono);font-size:9px;color:var(--ocean);font-weight:600;margin-bottom:4px;letter-spacing:0.06em}
+.main-character-arc-card{display:flex;flex-direction:column;align-items:center;text-align:center;gap:12px;min-height:170px}
+.main-character-arc-card .ch{width:100%;margin-bottom:4px}
+.main-character-arc-icon{position:relative;width:110px;height:110px;border-radius:50%;background:linear-gradient(180deg, rgba(232,221,255,.15), rgba(232,221,255,.08));display:flex;align-items:center;justify-content:center;margin:0 auto;box-shadow:0 18px 35px rgba(0,0,0,.06);overflow:hidden;border:2px solid rgba(232,221,255,.25)}
+.main-character-arc-icon::before{content:'';position:absolute;inset:12px;border-radius:50%;background:rgba(232,221,255,.12)}
+.arc-emoji{position:relative;font-size:52px;animation:float-card-emoji 5s ease-in-out infinite;z-index:1}
+@keyframes float-card-emoji{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.main-character-arc-score{display:flex;flex-direction:column;gap:4px;align-items:center}
+.main-character-arc-score-val{font-family:var(--mono);font-size:42px;font-weight:700;color:var(--ink)}
+.main-character-arc-score-label{font-family:var(--sans);font-size:11px;color:var(--ink2);font-weight:700;text-transform:uppercase;letter-spacing:.12em}
+.main-character-arc-explain{font-family:var(--sans);font-size:12px;color:var(--ink2);line-height:1.4;max-width:240px}
+.weekly-analysis-card .weekly-line{font-family:var(--sans);font-size:12px;color:var(--ink2);line-height:1.5;margin-bottom:8px}
+.weekly-analysis-card .weekly-line:last-child{margin-bottom:0}
+.weekly-analysis-card .ch{margin-bottom:10px}
 .score-main{display:flex;align-items:baseline;gap:3px;justify-content:center}
 .score-val{font-family:var(--mono);font-size:55px;font-weight:700;color:var(--ink);line-height:1}
 .score-max{font-family:var(--mono);font-size:32px;font-weight:500;color:var(--ink2);line-height:1}
@@ -270,6 +295,15 @@ body{
 .quote-text{font-size:11.5px;color:var(--ink);line-height:1.55;font-style:italic;margin-bottom:5px}
 .quote-meta{font-size:10px;color:var(--ink3);display:flex;gap:8px;align-items:center}
 
+.dual-card-row{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:0 0 18px;padding:0}
+.topic-row, .opportunity-row{display:flex;flex-direction:column;gap:6px;padding:10px 0;border-bottom:0.5px solid var(--border)}
+.topic-row:last-child, .opportunity-row:last-child{border-bottom:none}
+.topic-meta{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--ink)}
+.topic-icon{font-size:14px;line-height:1.2;width:20px;flex-shrink:0}
+.topic-copy{font-family:var(--sans);font-weight:600;color:var(--ink)}
+.opp-topic{font-family:var(--sans);font-size:13px;font-weight:700;color:var(--ink)}
+.opp-angle{font-family:var(--sans);font-size:12px;color:var(--ink2);line-height:1.45}
+
 /* ── INSIGHT BLOCKS ── */
 .insight{
   background:var(--surface2);border-radius:var(--r2);
@@ -357,22 +391,25 @@ body{
 /* ── PLATFORM OVERVIEW OUTER CARD ── */
 .platform-overview-card{
   display:flex;flex-direction:column;
+  font-size:0.95em;
+  height:auto;
 }
 .platform-overview-card .ch{
   flex-shrink:0;
 }
 .account-grid{
   display:grid;grid-template-columns:1fr 1fr 1fr;
-  gap:10px;flex:1;align-items:stretch;
+  gap:8px;align-items:start;
 }
 
 /* ── INNER ACCOUNT CARDS ── */
 .account-card{
   display:flex;flex-direction:column;justify-content:space-between;
-  border-radius:16px;padding:12px 14px;
+  border-radius:12px;padding:8px 10px;
   background:var(--surface2);border:1px solid var(--border);
   transition:all .2s ease;
 }
+.account-card:hover{background:var(--surface);box-shadow:var(--shadow-soft)}
 .account-card:hover{background:var(--surface);box-shadow:var(--shadow-soft)}
 
 /* platform pill */
@@ -389,39 +426,48 @@ body{
 
 /* account name */
 .account-name{
-  font-family:var(--mono);font-size:12px;font-weight:700;
-  color:var(--ink);letter-spacing:-0.01em;margin-bottom:8px;
+  font-family:var(--mono);font-size:11px;font-weight:700;
+  color:var(--ink);letter-spacing:-0.01em;margin-bottom:6px;
 }
 
 /* primary metric */
 .account-primary{
-  display:flex;align-items:baseline;gap:4px;margin-bottom:8px;
+  display:flex;align-items:baseline;gap:6px;margin-bottom:6px;flex-wrap:wrap;
 }
 .account-primary-val{
-  font-family:var(--mono);font-size:28px;font-weight:700;
+  font-family:var(--mono);font-size:24px;font-weight:700;
   color:var(--ink);line-height:1;
 }
+.account-primary-growth{
+  font-family:var(--sans);font-size:12px;font-weight:700;letter-spacing:0.02em;
+}
+.account-primary-growth.up{color:var(--spring)}
+.account-primary-growth.down{color:var(--rasp)}
 .account-primary-lbl{
-  font-family:var(--sans);font-size:10px;color:var(--ink3);
+  font-family:var(--sans);font-size:9px;color:var(--ink3);
 }
 
 /* metric rows */
-.account-metrics{display:flex;flex-direction:column;gap:4px;margin-bottom:8px;}
+.account-metrics{display:flex;flex-direction:column;gap:3px;margin-bottom:6px;}
 .account-metric-row{
   display:flex;justify-content:space-between;align-items:center;
-  font-family:var(--sans);font-size:10px;
-  padding:3px 0;border-bottom:0.5px solid var(--border);
+  font-family:var(--sans);font-size:9px;
+  padding:2px 0;border-bottom:0.5px solid var(--border);
 }
 .account-metric-row:last-child{border-bottom:none}
 .account-metric-key{color:var(--ink3)}
 .account-metric-val{font-weight:600;color:var(--ink)}
 .account-metric-val.up{color:var(--spring)}
+.account-metric-val.down{color:var(--rasp)}
+.account-metric-percent{font-size:10px;font-weight:700;margin-left:4px;}
+.account-metric-percent.up{color:var(--spring)}
+.account-metric-percent.down{color:var(--rasp)}
 
 /* insight */
 .account-insight{
-  font-family:var(--sans);font-size:10px;
+  font-family:var(--sans);font-size:9px;
   color:var(--ink2);line-height:1.35;
-  padding-top:6px;border-top:0.5px solid var(--border);
+  padding-top:5px;border-top:0.5px solid var(--border);
 }
 
 </style>
@@ -465,19 +511,62 @@ body{
 ════════════════════════════════════ -->
 <div id="view-overview" class="panel active">
   <div class="hero-grid">
-    <div class="card hero-card ecosystem-score-card">
-      <div class="ch"><span class="ct">creator health</span><span class="cs">overall signal</span></div>
-      <div class="score-display">
-        <div class="score-main"><span class="score-val">84</span><span class="score-max">/100</span></div>
-        <div class="score-status">💄 <span>Strong Growth</span></div>
-        <div class="score-analysis">Your creator voice is resonant and gaining momentum.</div>
-        <div class="recommendation-box">
-          <span class="recommendation-box-label">Recommendations</span>
-          <span class="recommendation-box-text">Post 3× this week — shares are your fastest-growing metric (+47.9%). Lean into hyper-specific Indonesian observations on @urdategurly and one LinkedIn essay with personal framing.</span>
+    <div class="hero-col">
+      <div class="card hero-card ecosystem-score-card">
+        <div class="ch"><span class="ct">creator health</span><span class="cs">overall signal</span></div>
+        <div class="score-display">
+          <div class="score-main"><span class="score-val">84</span><span class="score-max">/100</span></div>
+          <div class="score-status">💄 <span>Strong Growth</span></div>
+          <div class="score-analysis">Channels are growing; focus 15s video, search-led stories, and career candid posts.</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="ch"><span class="ct">audience voices</span><span class="cs">signal first</span></div>
+        <div class="quote">
+          <div class="quote-text">"she gets it" — concise validation from the core cohort.</div>
+          <div class="quote-meta"><span class="badge badge--tg">@urdategurly</span><span style="color:var(--spring)">high resonance</span></div>
+        </div>
+        <div class="quote">
+          <div class="quote-text">"finally someone said this" — audience relief and recognition.</div>
+          <div class="quote-meta"><span class="badge badge--ek">@itselinkaban</span><span style="color:var(--spring)">saved</span></div>
+        </div>
+        <div class="quote">
+          <div class="quote-text">"this feels too real" — the emotional signal is clear.</div>
+          <div class="quote-meta"><span class="badge badge--li">linkedin</span><span>3 comments</span></div>
+        </div>
+        <div class="quote">
+          <div class="quote-text">"it actually sounds like me, this is everything."</div>
+          <div class="quote-meta"><span class="badge badge--tg">@urdategurly</span><span style="color:var(--spring)">high resonance</span></div>
+        </div>
+        <div class="quote">
+          <div class="quote-text">"career talks with heart are the only things i save now."</div>
+          <div class="quote-meta"><span class="badge badge--ek">@itselinkaban</span><span style="color:var(--spring)">saved</span></div>
         </div>
       </div>
     </div>
-    <div class="card hero-card platform-overview-card">
+    <div class="hero-col">
+      <div class="card audience-energy-card">
+        <div class="ch"><span class="ct">audience energy</span><span class="cs">sentiments & mood</span></div>
+        <div class="audience-energy-score"><span id="audienceEnergyEmoji" class="audience-energy-emoji">🫶</span></div>
+        <div class="audience-energy-label">Warm & Grounded</div>
+        <div class="audience-energy-desc">Audience trusts this space to hold what's real without becoming heavy.</div>
+        <div class="audience-energy-analysis">
+          <div class="audience-energy-analysis-title">Analysis</div>
+          <div>Empathy-driven storytelling outperforms educational-only content. Vulnerability combined with insight resonates strongest.</div>
+        </div>
+      </div>
+      <div class="card main-character-arc-card">
+        <div class="ch"><span class="ct">main character arc</span><span class="cs">today's energy</span></div>
+        <div class="main-character-arc-icon"><span id="mainCharacterArcEmoji" class="arc-emoji">✨</span></div>
+        <div class="main-character-arc-score">
+          <span class="main-character-arc-score-val">68%</span>
+          <span class="main-character-arc-score-label">delulu level</span>
+        </div>
+        <div class="main-character-arc-explain">Founder Delusion — already planning Version 8 before Version 1 is finished.</div>
+      </div>
+    </div>
+    <div class="hero-col">
+      <div class="card platform-overview-card">
       <div class="ch"><span class="ct">platform overview</span><span class="cs">account growth</span></div>
       <div class="account-grid">
 
@@ -487,16 +576,18 @@ body{
             <span class="account-platform account-platform--tg">TikTok</span>
             <div class="account-name">@urdategurly</div>
             <div class="account-primary">
-              <span class="account-primary-val">16.6k</span>
-              <span class="account-primary-lbl">followers</span>
+              <span class="account-primary-val">179.1k</span>
+              <span class="account-primary-growth up">↑175%</span>
+              <span class="account-primary-lbl">7-day views</span>
             </div>
             <div class="account-metrics">
-              <div class="account-metric-row"><span class="account-metric-key">growth</span><span class="account-metric-val up">+175%</span></div>
-              <div class="account-metric-row"><span class="account-metric-key">monthly reach</span><span class="account-metric-val">179k</span></div>
-              <div class="account-metric-row"><span class="account-metric-key">female audience</span><span class="account-metric-val">73%</span></div>
+              <div class="account-metric-row"><span class="account-metric-key">follower growth</span><span class="account-metric-val">+207 <span class="account-metric-percent up">↑12.8%</span></span></div>
+              <div class="account-metric-row"><span class="account-metric-key">audience engagement</span><span class="account-metric-val">8.4% <span class="account-metric-percent up">↑22%</span></span></div>
+              <div class="account-metric-row"><span class="account-metric-key">traffic source</span><span class="account-metric-val">60.8% FYP</span></div>
+              <div class="account-metric-row"><span class="account-metric-key">profile visits</span><span class="account-metric-val">2.5k</span></div>
             </div>
           </div>
-          <div class="account-insight">Strongest growth engine and primary audience acquisition channel.</div>
+          <div class="account-insight">Emotional resonance drives discovery and shares on primary platform.</div>
         </div>
 
         <!-- @itselinkaban -->
@@ -505,16 +596,18 @@ body{
             <span class="account-platform account-platform--ek">TikTok Alt</span>
             <div class="account-name">@itselinkaban</div>
             <div class="account-primary">
-              <span class="account-primary-val">676</span>
-              <span class="account-primary-lbl">followers</span>
+              <span class="account-primary-val">13.7k</span>
+              <span class="account-primary-growth down">↓8.2%</span>
+              <span class="account-primary-lbl">7-day views</span>
             </div>
             <div class="account-metrics">
-              <div class="account-metric-row"><span class="account-metric-key">growth</span><span class="account-metric-val up">+9</span></div>
-              <div class="account-metric-row"><span class="account-metric-key">views</span><span class="account-metric-val">13.7k</span></div>
-              <div class="account-metric-row"><span class="account-metric-key">search discovery</span><span class="account-metric-val">40.8%</span></div>
+              <div class="account-metric-row"><span class="account-metric-key">follower growth</span><span class="account-metric-val">+42 <span class="account-metric-percent down">↓3.2%</span></span></div>
+              <div class="account-metric-row"><span class="account-metric-key">audience engagement</span><span class="account-metric-val">6.5% <span class="account-metric-percent up">↑16%</span></span></div>
+              <div class="account-metric-row"><span class="account-metric-key">traffic source</span><span class="account-metric-val">45% search</span></div>
+              <div class="account-metric-row"><span class="account-metric-key">profile visits</span><span class="account-metric-val">234</span></div>
             </div>
           </div>
-          <div class="account-insight">Strong discoverability and a testing ground for new narratives.</div>
+          <div class="account-insight">High search discoverability validates niche; follower growth needs content boost.</div>
         </div>
 
         <!-- LinkedIn -->
@@ -523,40 +616,64 @@ body{
             <span class="account-platform account-platform--li">Professional</span>
             <div class="account-name">LinkedIn</div>
             <div class="account-primary">
-              <span class="account-primary-val">754</span>
-              <span class="account-primary-lbl">followers</span>
+              <span class="account-primary-val">42.8k</span>
+              <span class="account-primary-growth up">↑18.4%</span>
+              <span class="account-primary-lbl">Post Impressions (7 Days)</span>
             </div>
             <div class="account-metrics">
-              <div class="account-metric-row"><span class="account-metric-key">growth</span><span class="account-metric-val up">+1.8%</span></div>
-              <div class="account-metric-row"><span class="account-metric-key">profile views</span><span class="account-metric-val">325</span></div>
-              <div class="account-metric-row"><span class="account-metric-key">senior audience</span><span class="account-metric-val">35%</span></div>
+              <div class="account-metric-row"><span class="account-metric-key">Follower Growth</span><span class="account-metric-val">+27 <span class="account-metric-percent up">↑6.3%</span></span></div>
+              <div class="account-metric-row"><span class="account-metric-key">Engagement Rate</span><span class="account-metric-val">4.8% <span class="account-metric-percent up">↑0.7%</span></span></div>
+              <div class="account-metric-row"><span class="account-metric-key">Profile Views</span><span class="account-metric-val">325 <span class="account-metric-percent up">↑42%</span></span></div>
+              <div class="account-metric-row"><span class="account-metric-key">Viewer Seniority</span><span class="account-metric-val" style="font-size:12px">Manager (31%)</span></div>
+              <div class="account-metric-row"><span class="account-metric-key">Top Industries</span><span class="account-metric-val" style="font-size:12px">Tech, Marketing, Finance</span></div>
             </div>
           </div>
-          <div class="account-insight">Authority-building and professional positioning channel.</div>
+          <div class="account-insight">High-value professional impressions are converting followers from senior decision makers.</div>
         </div>
 
       </div>
     </div>
   </div>
-
-  <div class="section-header"><h3 class="section-title">Social Listening</h3></div>
-  <div class="grid-main" style="grid-template-columns:1fr;">
-    <div class="col">
-      <div class="card">
-        <div class="ch"><span class="ct">audience voices</span><span class="cs">signal first</span></div>
-        <div class="quote">
-          <div class="quote-text">"she gets it" — concise validation from the core cohort.</div>
-          <div class="quote-meta"><span class="badge badge--tg">@urdategurly</span><span style="color:var(--spring)">high resonance</span></div>
-        </div>
-        <div class="quote">
-          <div class="quote-text">"finally someone said this" — audience relief and recognition.
-          </div>
-          <div class="quote-meta"><span class="badge badge--ek">@itselinkaban</span><span style="color:var(--spring)">saved</span></div>
-        </div>
-        <div class="quote">
-          <div class="quote-text">"this feels too real" — the emotional signal is clear.</div>
-          <div class="quote-meta"><span class="badge badge--li">linkedin</span><span>3 comments</span></div>
-        </div>
+  <div class="dual-card-row">
+    <div class="card">
+      <div class="ch"><span class="ct">hot topics</span><span class="badge badge--tg">Trending Conversations</span></div>
+      <div class="topic-row">
+        <div class="topic-meta"><span class="topic-icon">🔥</span><span class="topic-copy">Career Reinvention</span></div>
+      </div>
+      <div class="topic-row">
+        <div class="topic-meta"><span class="topic-icon">💬</span><span class="topic-copy">Dating Fatigue</span></div>
+      </div>
+      <div class="topic-row">
+        <div class="topic-meta"><span class="topic-icon">📈</span><span class="topic-copy">Creator Burnout</span></div>
+      </div>
+      <div class="topic-row">
+        <div class="topic-meta"><span class="topic-icon">🤔</span><span class="topic-copy">Starting Over at 30</span></div>
+      </div>
+      <div class="topic-row">
+        <div class="topic-meta"><span class="topic-icon">✨</span><span class="topic-copy">Self-Worth & Confidence</span></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="ch"><span class="ct">content opportunities</span><span class="badge badge--li">Recommended Angles</span></div>
+      <div class="opportunity-row">
+        <div class="opp-topic">Career Reinvention</div>
+        <div class="opp-angle">"What nobody tells you about rebuilding your identity after leaving corporate."</div>
+      </div>
+      <div class="opportunity-row">
+        <div class="opp-topic">Dating Fatigue</div>
+        <div class="opp-angle">"Why so many smart women stay on dating apps longer than they want."</div>
+      </div>
+      <div class="opportunity-row">
+        <div class="opp-topic">Creator Burnout</div>
+        <div class="opp-angle">"The hidden emotional cost of building a personal brand."</div>
+      </div>
+      <div class="opportunity-row">
+        <div class="opp-topic">Self-Worth</div>
+        <div class="opp-angle">"Confidence isn't built by winning. It's built by surviving."</div>
+      </div>
+      <div class="opportunity-row">
+        <div class="opp-topic">Starting Over at 30</div>
+        <div class="opp-angle">"The myth that everyone else has their life figured out."</div>
       </div>
     </div>
   </div>
@@ -1084,6 +1201,19 @@ const chartCfg = (canvasId) => ({
 });
 
 new Chart(document.getElementById('liChart'), chartCfg('liChart'));
+
+const mainCharacterArcEmojis = ['💄','🫶','🤌','😮‍💨','🫦','😏','🥂','✨'];
+const audienceEnergyEmojis = ['🫶','🫠','🥹','🗿','😮‍💨','🤔','🧠','💅','🤌','✨'];
+(function(){
+  const today = new Date();
+  const seed = today.getFullYear() * 10000 + (today.getMonth()+1) * 100 + today.getDate();
+  const arcIndex = seed % mainCharacterArcEmojis.length;
+  const energyIndex = (seed + 3) % audienceEnergyEmojis.length;
+  const arcEmojiEl = document.getElementById('mainCharacterArcEmoji');
+  const energyEmojiEl = document.getElementById('audienceEnergyEmoji');
+  if (arcEmojiEl) arcEmojiEl.textContent = mainCharacterArcEmojis[arcIndex];
+  if (energyEmojiEl) energyEmojiEl.textContent = audienceEnergyEmojis[energyIndex];
+})();
 
 function switchView(id, el) {
   document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
