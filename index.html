@@ -99,8 +99,8 @@ body{
 }
 .card:hover{transform:translateY(-2px);box-shadow:var(--shadow-hover)}
 
-.hero-grid{display:grid;grid-template-columns:1fr 1.5fr 1.5fr;gap:10px;margin-bottom:12px;align-items:stretch}
-.hero-card{display:flex;flex-direction:column;justify-content:space-between;min-height:160px;max-height:160px;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1fr 2.8fr;gap:10px;margin-bottom:12px;align-items:stretch}
+.hero-card{display:flex;flex-direction:column;justify-content:space-between;min-height:200px;overflow:hidden}
 .hero-card.ecosystem-score-card{display:flex;flex-direction:column;justify-content:flex-start;align-items:stretch;text-align:center;aspect-ratio:1/1;min-height:auto;max-height:none;overflow:hidden}
 .card.hero-card .ch{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;}
 .card.hero-card.ecosystem-score-card .ch{margin-bottom:8px;}
@@ -340,26 +340,88 @@ body{
 
 /* ── RECOMMENDATION BOX ── */
 .recommendation-box{
-  padding:8px 10px;
-  border-radius:16px;
+  padding:8px 10px;border-radius:16px;
   background:rgba(194,16,71,0.07);
   border:1px solid rgba(194,16,71,0.18);
-  margin-top:14px;
-  text-align:left;
+  margin-top:14px;text-align:left;
 }
 .recommendation-box-label{
-  display:block;
-  font-family:var(--sans);
-  font-size:11px;
-  font-weight:700;
-  color:var(--rasp);
-  margin-bottom:4px;
+  display:block;font-family:var(--sans);font-size:11px;
+  font-weight:700;color:var(--rasp);margin-bottom:4px;
 }
 .recommendation-box-text{
-  font-family:var(--sans);
-  font-size:10px;
-  color:var(--ink2);
-  line-height:1.3;
+  font-family:var(--sans);font-size:10px;
+  color:var(--ink2);line-height:1.3;
+}
+
+/* ── PLATFORM OVERVIEW OUTER CARD ── */
+.platform-overview-card{
+  display:flex;flex-direction:column;
+}
+.platform-overview-card .ch{
+  flex-shrink:0;
+}
+.account-grid{
+  display:grid;grid-template-columns:1fr 1fr 1fr;
+  gap:10px;flex:1;align-items:stretch;
+}
+
+/* ── INNER ACCOUNT CARDS ── */
+.account-card{
+  display:flex;flex-direction:column;justify-content:space-between;
+  border-radius:16px;padding:12px 14px;
+  background:var(--surface2);border:1px solid var(--border);
+  transition:all .2s ease;
+}
+.account-card:hover{background:var(--surface);box-shadow:var(--shadow-soft)}
+
+/* platform pill */
+.account-platform{
+  display:inline-flex;align-items:center;
+  font-family:var(--sans);font-size:9px;font-weight:600;
+  padding:2px 8px;border-radius:999px;
+  margin-bottom:7px;align-self:flex-start;letter-spacing:0.04em;
+  text-transform:uppercase;
+}
+.account-platform--tg{background:rgba(194,16,71,0.08);color:var(--rasp)}
+.account-platform--ek{background:rgba(130,110,200,0.1);color:#4E3FAA}
+.account-platform--li{background:rgba(63,110,168,0.1);color:var(--ocean)}
+
+/* account name */
+.account-name{
+  font-family:var(--mono);font-size:12px;font-weight:700;
+  color:var(--ink);letter-spacing:-0.01em;margin-bottom:8px;
+}
+
+/* primary metric */
+.account-primary{
+  display:flex;align-items:baseline;gap:4px;margin-bottom:8px;
+}
+.account-primary-val{
+  font-family:var(--mono);font-size:28px;font-weight:700;
+  color:var(--ink);line-height:1;
+}
+.account-primary-lbl{
+  font-family:var(--sans);font-size:10px;color:var(--ink3);
+}
+
+/* metric rows */
+.account-metrics{display:flex;flex-direction:column;gap:4px;margin-bottom:8px;}
+.account-metric-row{
+  display:flex;justify-content:space-between;align-items:center;
+  font-family:var(--sans);font-size:10px;
+  padding:3px 0;border-bottom:0.5px solid var(--border);
+}
+.account-metric-row:last-child{border-bottom:none}
+.account-metric-key{color:var(--ink3)}
+.account-metric-val{font-weight:600;color:var(--ink)}
+.account-metric-val.up{color:var(--spring)}
+
+/* insight */
+.account-insight{
+  font-family:var(--sans);font-size:10px;
+  color:var(--ink2);line-height:1.35;
+  padding-top:6px;border-top:0.5px solid var(--border);
 }
 
 </style>
@@ -416,19 +478,63 @@ body{
       </div>
     </div>
     <div class="card hero-card platform-overview-card">
-      <div class="ch"><span class="ct">platform overview</span><span class="cs">compact health</span></div>
-      <div class="summary-list">
-        <div class="summary-row"><span>@urdategurly · tiktok</span><span>88</span><span>16.6k</span><span class="growth growth-up">+175%</span></div>
-        <div class="summary-row"><span>@itselinkaban · tiktok alt</span><span>74</span><span>676</span><span class="growth growth-up">+9</span></div>
-        <div class="summary-row"><span>linkedin · professional</span><span>79</span><span>754</span><span class="growth growth-up">+1.8%</span></div>
-      </div>
-    </div>
-    <div class="card hero-card chita-card">
-      <div class="ch"><span class="ct">🐆 chita's corner</span><span class="cs">unfiltered signal</span></div>
-      <div class="chita-list">
-        <div class="hero-box"><strong>Delusion Meter</strong><span style="font-family:var(--mono);font-size:28px;color:var(--rasp)">52 / 100</span></div>
-        <div class="hero-box"><strong>Tiny widget</strong>Calls out the thing no one else is naming.</div>
-        <div class="hero-box"><strong>Unsolicited opinion</strong>"The dashboard is finished. The content is not."</div>
+      <div class="ch"><span class="ct">platform overview</span><span class="cs">account growth</span></div>
+      <div class="account-grid">
+
+        <!-- @urdategurly -->
+        <div class="account-card">
+          <div>
+            <span class="account-platform account-platform--tg">TikTok</span>
+            <div class="account-name">@urdategurly</div>
+            <div class="account-primary">
+              <span class="account-primary-val">16.6k</span>
+              <span class="account-primary-lbl">followers</span>
+            </div>
+            <div class="account-metrics">
+              <div class="account-metric-row"><span class="account-metric-key">growth</span><span class="account-metric-val up">+175%</span></div>
+              <div class="account-metric-row"><span class="account-metric-key">monthly reach</span><span class="account-metric-val">179k</span></div>
+              <div class="account-metric-row"><span class="account-metric-key">female audience</span><span class="account-metric-val">73%</span></div>
+            </div>
+          </div>
+          <div class="account-insight">Strongest growth engine and primary audience acquisition channel.</div>
+        </div>
+
+        <!-- @itselinkaban -->
+        <div class="account-card">
+          <div>
+            <span class="account-platform account-platform--ek">TikTok Alt</span>
+            <div class="account-name">@itselinkaban</div>
+            <div class="account-primary">
+              <span class="account-primary-val">676</span>
+              <span class="account-primary-lbl">followers</span>
+            </div>
+            <div class="account-metrics">
+              <div class="account-metric-row"><span class="account-metric-key">growth</span><span class="account-metric-val up">+9</span></div>
+              <div class="account-metric-row"><span class="account-metric-key">views</span><span class="account-metric-val">13.7k</span></div>
+              <div class="account-metric-row"><span class="account-metric-key">search discovery</span><span class="account-metric-val">40.8%</span></div>
+            </div>
+          </div>
+          <div class="account-insight">Strong discoverability and a testing ground for new narratives.</div>
+        </div>
+
+        <!-- LinkedIn -->
+        <div class="account-card">
+          <div>
+            <span class="account-platform account-platform--li">Professional</span>
+            <div class="account-name">LinkedIn</div>
+            <div class="account-primary">
+              <span class="account-primary-val">754</span>
+              <span class="account-primary-lbl">followers</span>
+            </div>
+            <div class="account-metrics">
+              <div class="account-metric-row"><span class="account-metric-key">growth</span><span class="account-metric-val up">+1.8%</span></div>
+              <div class="account-metric-row"><span class="account-metric-key">profile views</span><span class="account-metric-val">325</span></div>
+              <div class="account-metric-row"><span class="account-metric-key">senior audience</span><span class="account-metric-val">35%</span></div>
+            </div>
+          </div>
+          <div class="account-insight">Authority-building and professional positioning channel.</div>
+        </div>
+
       </div>
     </div>
   </div>
