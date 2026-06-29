@@ -18,11 +18,12 @@ body{
   color:var(--ink);
   font-size:12px;
   line-height:1.45;
-  min-height:100vh;
+  min-height:768px;
+  overflow-y:auto;
 }
 
 /* ── SHELL ── */
-.shell{display:flex;flex-direction:column;min-height:100vh;max-width:1780px;margin:0 auto;padding:12px 16px;width:100%;zoom:0.90;}
+.shell{display:flex;flex-direction:column;min-height:960px;max-width:1280px;width:1280px;margin:0 auto;padding:12px 16px;overflow:auto;zoom:0.80;}
 
 /* ── SITE HEADER ── */
 .dashboard-header{display:flex;flex-direction:column;gap:8px;margin-bottom:12px}
@@ -30,8 +31,14 @@ body{
 .welcome-message{font-family:var(--sans);font-size:13px;font-weight:500;color:var(--ink2);margin-bottom:4px}
 .brand-block h1{font-family:var(--mono);font-size:38px;font-weight:700;line-height:1.03;letter-spacing:-0.02em;color:var(--ink);margin:0}
 .last-updated{margin-top:6px;font-family:var(--mono);font-size:11px;color:var(--ink3)}
-.profile-wrapper{flex-shrink:0}
-.profile-avatar{width:50px;height:50px;border-radius:999px;display:flex;align-items:center;justify-content:center;background:var(--surface);border:1.5px solid var(--rasp);box-shadow:var(--shadow-soft);font-family:var(--mono);font-size:16px;color:var(--ink)}
+.profile-wrapper{flex-shrink:0;display:flex;align-items:center;gap:10px}
+.connect-tiktok-btn{font-family:var(--sans);font-size:13px;font-weight:600;color:var(--ink2);background:var(--surface);border:1px solid var(--border);border-radius:999px;padding:8px 16px;cursor:pointer;transition:opacity .15s;white-space:nowrap}
+.connect-tiktok-btn:hover{opacity:.75;color:var(--ink)}
+.tiktok-connect-wrapper{position:relative}
+.tiktok-dropdown{display:none;position:absolute;right:0;top:calc(100% + 6px);background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;min-width:160px;box-shadow:0 4px 16px rgba(0,0,0,.08);z-index:999}
+.tiktok-dropdown.open{display:block}
+.tiktok-dropdown-item{padding:10px 16px;font-family:var(--sans);font-size:13px;font-weight:500;color:var(--ink2);cursor:pointer}
+.tiktok-dropdown-item:hover{background:var(--surface);color:var(--ink)}.profile-avatar{width:50px;height:50px;border-radius:999px;display:flex;align-items:center;justify-content:center;background:var(--surface);border:1.5px solid var(--rasp);box-shadow:var(--shadow-soft);font-family:var(--mono);font-size:16px;color:var(--ink)}
 
 /* ── WORKSPACE CONTAINER ── */
 .workspace-shell{background:transparent;border:0;overflow:visible;position:relative;display:flex;flex-direction:column}
@@ -102,6 +109,7 @@ body{
 .hero-grid{display:none}
 .overview-grid{display:grid;grid-template-columns:350px minmax(0,1fr) 350px;grid-template-rows:minmax(240px,auto) minmax(0,auto);gap:10px;margin-bottom:0;align-items:stretch}
   .left-column{grid-column:1;grid-row:1 / span 2;display:flex;flex-direction:column;gap:10px}
+  .right-column{grid-column:3;grid-row:1 / span 2;display:flex;flex-direction:column;gap:10px}
   .overview-card{display:flex;flex-direction:column;gap:10px;min-height:0}
   .creator-health-card{min-height:170px}
   .main-character-arc-card{min-height:240px}
@@ -408,28 +416,64 @@ body{
       display:flex;flex-direction:column;
       font-size:0.95em;
       height:auto;
-      gap:10px;
-      padding:12px;
+      gap:6px;
+      padding:8px;
+      overflow:hidden;
     }
     .platform-overview-card .ch{
       flex-shrink:0;
-      margin-bottom:12px;
+      margin-bottom:6px;
+      font-size:12px;
     }
     .account-grid{
-      display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
-      gap:10px;
-      align-items:stretch;
+      display:grid;grid-template-columns:repeat(2,1fr);
+      gap:8px;
+      grid-auto-rows:auto;
+      align-items:start;
       margin-bottom:0;
+      width:100%;
     }
     .platform-overview-card .account-card{
+      width:100%;
       height:auto;
+      padding:6px;
+      border-radius:12px;
+      box-sizing:border-box;
+      overflow:hidden;
+    }
+    .platform-overview-card .account-card--square{
+      aspect-ratio:1 / 1;
+    }
+    .platform-overview-card .account-card--linkedin{
+      grid-column:1 / -1;
+      aspect-ratio:2.2 / 1;
+      min-height:90px;
+      max-width:100%;
+      width:100%;
+      margin:0 auto;
+      padding:6px;
+      box-sizing:border-box;
+      align-self:start;
+    }
+    .platform-overview-card .account-card--linkedin .account-primary-val{
+      font-size:14px;
+    }
+    .platform-overview-card .account-platform{font-size:7.5px}
+    .platform-overview-card .account-name{font-size:9px}
+    .platform-overview-card .account-primary-val{font-size:14px}
+    .platform-overview-card .account-primary-lbl{font-size:7.5px}
+    .platform-overview-card .account-metric-row{font-size:7.5px; padding:0.5px 0}
+    .platform-overview-card .account-insight{font-size:7.5px; line-height:1.2}
+    .platform-overview-card .account-card--linkedin .account-primary-lbl,
+    .platform-overview-card .account-card--linkedin .account-metric-row,
+    .platform-overview-card .account-card--linkedin .account-insight{
+      font-size:9px;
+    }
+    .platform-overview-card .account-card--linkedin .account-metric-row{
+      padding:1px 0;
     }
     .platform-summary-row{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      width:100%;
-      margin:0;
+      display:none;
     }
     .platform-summary-box{
       flex:1 1 0;
@@ -469,8 +513,10 @@ body{
 /* ── INNER ACCOUNT CARDS ── */
     .account-card{
       display:flex;flex-direction:column;justify-content:space-between;
-      height:100%;
+      width:100%;
+      height:auto;
       min-height:0;
+      aspect-ratio:1 / 1;
       border-radius:16px;
       padding:16px;
       background:var(--surface2);
@@ -552,6 +598,13 @@ body{
       </div>
     </div>
     <div class="profile-wrapper">
+      <div class="tiktok-connect-wrapper">
+        <button class="connect-tiktok-btn" onclick="toggleTikTokMenu(event)">Connect TikTok ▾</button>
+        <div class="tiktok-dropdown" id="tiktokDropdown">
+          <div class="tiktok-dropdown-item" onclick="connectTikTokAccount('@urdategurly')">@urdategurly</div>
+          <div class="tiktok-dropdown-item" onclick="connectTikTokAccount('@itselinkaban')">@itselinkaban</div>
+        </div>
+      </div>
       <div class="profile-avatar">EK</div>
     </div>
   </div>
@@ -598,6 +651,115 @@ body{
         <div class="main-character-arc-explain"><strong>Founder Delusion</strong> — already planning Version 8<br>before Version 1 is finished.</div>
       </div>
 
+      <div class="card hot-topics-card overview-card overview-card--vertical">
+        <div class="ch"><span class="ct section-title">hot topics</span><span class="badge">Trending</span></div>
+        <div class="topic-row">
+          <div class="topic-meta"><span class="topic-icon">🔥</span><span class="topic-copy">Career Reinvention</span></div>
+          <div class="topic-trend">People are questioning traditional career paths and discussing identity loss after layoffs, burnout, or pivots. Emotional tone: anxious but hopeful.</div>
+        </div>
+        <div class="topic-row">
+          <div class="topic-meta"><span class="topic-icon">💬</span><span class="topic-copy">Dating Fatigue</span></div>
+          <div class="topic-trend">Growing frustration with dating apps, emotional burnout, and modern relationship expectations. Dominant sentiment: exhaustion and self-questioning.</div>
+        </div>
+        <div class="topic-row">
+          <div class="topic-meta"><span class="topic-icon">📈</span><span class="topic-copy">Creator Burnout</span></div>
+          <div class="topic-trend">Conversations around content pressure, algorithm fatigue, and the unsustainability of posting culture. Gaining momentum across creator communities.</div>
+        </div>
+        <div class="topic-row">
+          <div class="topic-meta"><span class="topic-icon">🤔</span><span class="topic-copy">Starting Over at 30</span></div>
+          <div class="topic-trend">30s as a reset point is trending — career shifts, late blooming, and unlearning societal timelines. High resonance in women-led spaces.</div>
+        </div>
+        <div class="topic-row">
+          <div class="topic-meta"><span class="topic-icon">✨</span><span class="topic-copy">Self-Worth & Confidence</span></div>
+          <div class="topic-trend">Discussions moving from surface-level affirmations toward earned confidence and emotional resilience. Audience craves substance over hype.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card audience-energy-card overview-card overview-card--wide">
+      <div class="ch"><span class="ct section-title">audience energy</span><span class="badge">Sentiments &amp; Mood</span></div>
+      <div class="audience-energy-body">
+        <div class="audience-energy-score"><span id="audienceEnergyEmoji" class="audience-energy-emoji">🫶</span></div>
+        <div class="audience-energy-label">Warm & Grounded</div>
+        <div class="audience-energy-desc">Audience trusts this space to hold what's real without becoming heavy.</div>
+      </div>
+      <div class="audience-energy-analysis">
+        <div class="audience-energy-analysis-title">Analysis</div>
+        <div style="margin-bottom:6px"><strong style="font-size:10px;color:var(--ink)">Audience Energy Summary</strong><br>Your audience is emotionally present and psychologically safe here. They identify as "Warm & Grounded" — meaning they trust this space to hold real, unfiltered moments without tipping into heaviness. They show up to feel seen, not just informed.</div>
+        <div style="margin-bottom:6px"><strong style="font-size:10px;color:var(--ink)">Content Insight</strong><br>Empathy-driven storytelling outperforms educational-only content. Vulnerability combined with insight resonates strongest. Overly polished or purely informational posts underperform — this audience can feel when the human is missing.</div>
+        <div><strong style="font-size:10px;color:var(--ink)">Action Recommendation</strong><br>Lead with a personal moment or honest observation before delivering the takeaway. Use warm, conversational language — avoid cold statistics as openers. Stories with a soft emotional arc (struggle → realness → grounded conclusion) will perform best. Let the insight arrive naturally, not as a lesson.</div>
+      </div>
+    </div>
+
+    <div class="card platform-overview-card overview-card overview-card--wide">
+      <div class="ch"><span class="ct section-title">platform overview</span><span class="badge">Account Growth</span></div>
+      <div class="account-grid">
+
+        <!-- @urdategurly -->
+        <div class="account-card account-card--square">
+          <div>
+            <span class="account-platform account-platform--tg">TikTok</span>
+            <div class="account-name">@urdategurly</div>
+            <div class="account-primary">
+              <span class="account-primary-val">179.1k</span>
+              <span class="account-primary-growth up">↑175%</span>
+              <span class="account-primary-lbl">7-day views</span>
+            </div>
+            <div class="account-metrics">
+              <div class="account-metric-row"><span class="account-metric-key">follower growth</span><span class="account-metric-val">+207 <span class="account-metric-percent up">↑12.8%</span></span></div>
+              <div class="account-metric-row"><span class="account-metric-key">audience engagement</span><span class="account-metric-val">8.4% <span class="account-metric-percent up">↑22%</span></span></div>
+              <div class="account-metric-row"><span class="account-metric-key">traffic source</span><span class="account-metric-val">60.8% FYP</span></div>
+              <div class="account-metric-row"><span class="account-metric-key">profile visits</span><span class="account-metric-val">2.5k</span></div>
+            </div>
+          </div>
+          <div class="account-insight">Emotional resonance drives discovery and shares on primary platform.</div>
+        </div>
+
+        <!-- @itselinkaban -->
+        <div class="account-card account-card--square">
+          <div>
+            <span class="account-platform account-platform--ek">TikTok Alt</span>
+            <div class="account-name">@itselinkaban</div>
+            <div class="account-primary">
+              <span class="account-primary-val">13.7k</span>
+              <span class="account-primary-growth down">↓8.2%</span>
+              <span class="account-primary-lbl">7-day views</span>
+            </div>
+            <div class="account-metrics">
+              <div class="account-metric-row"><span class="account-metric-key">follower growth</span><span class="account-metric-val">+42 <span class="account-metric-percent down">↓3.2%</span></span></div>
+              <div class="account-metric-row"><span class="account-metric-key">audience engagement</span><span class="account-metric-val">6.5% <span class="account-metric-percent up">↑16%</span></span></div>
+              <div class="account-metric-row"><span class="account-metric-key">traffic source</span><span class="account-metric-val">45% search</span></div>
+              <div class="account-metric-row"><span class="account-metric-key">profile visits</span><span class="account-metric-val">234</span></div>
+            </div>
+          </div>
+          <div class="account-insight">High search discoverability validates niche; follower growth needs content boost.</div>
+        </div>
+
+        <!-- LinkedIn -->
+        <div class="account-card account-card--linkedin">
+          <div>
+            <span class="account-platform account-platform--li">Professional</span>
+            <div class="account-name">LinkedIn</div>
+            <div class="account-primary">
+              <span class="account-primary-val">42.8k</span>
+              <span class="account-primary-growth up">↑18.4%</span>
+              <span class="account-primary-lbl">Post Impressions (7 Days)</span>
+            </div>
+            <div class="account-metrics">
+              <div class="account-metric-row"><span class="account-metric-key">Follower Growth</span><span class="account-metric-val">+27 <span class="account-metric-percent up">↑6.3%</span></span></div>
+              <div class="account-metric-row"><span class="account-metric-key">Engagement Rate</span><span class="account-metric-val">4.8% <span class="account-metric-percent up">↑0.7%</span></span></div>
+              <div class="account-metric-row"><span class="account-metric-key">Profile Views</span><span class="account-metric-val">325 <span class="account-metric-percent up">↑42%</span></span></div>
+              <div class="account-metric-row"><span class="account-metric-key">Viewer Seniority</span><span class="account-metric-val" style="font-size:12px">Manager (31%)</span></div>
+              <div class="account-metric-row"><span class="account-metric-key">Top Industries</span><span class="account-metric-val" style="font-size:12px">Tech, Marketing, Finance</span></div>
+            </div>
+          </div>
+          <div class="account-insight">High-value professional impressions are converting followers from senior decision makers.</div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="right-column">
       <div class="card audience-voices-card overview-card overview-card--vertical">
         <div class="ch"><span class="ct section-title">audience voices</span><span class="badge">Signal First</span></div>
         <div class="quote">
@@ -631,135 +793,9 @@ body{
           <div class="reality-quote" id="realityQuote">Finished beats optimized.</div>
         </div>
       </div>
-    </div>
 
-    <div class="card audience-energy-card overview-card overview-card--wide">
-      <div class="ch"><span class="ct section-title">audience energy</span><span class="badge">Sentiments &amp; Mood</span></div>
-      <div class="audience-energy-body">
-        <div class="audience-energy-score"><span id="audienceEnergyEmoji" class="audience-energy-emoji">🫶</span></div>
-        <div class="audience-energy-label">Warm & Grounded</div>
-        <div class="audience-energy-desc">Audience trusts this space to hold what's real without becoming heavy.</div>
-      </div>
-      <div class="audience-energy-analysis">
-        <div class="audience-energy-analysis-title">Analysis</div>
-        <div style="margin-bottom:6px"><strong style="font-size:10px;color:var(--ink)">Audience Energy Summary</strong><br>Your audience is emotionally present and psychologically safe here. They identify as "Warm & Grounded" — meaning they trust this space to hold real, unfiltered moments without tipping into heaviness. They show up to feel seen, not just informed.</div>
-        <div style="margin-bottom:6px"><strong style="font-size:10px;color:var(--ink)">Content Insight</strong><br>Empathy-driven storytelling outperforms educational-only content. Vulnerability combined with insight resonates strongest. Overly polished or purely informational posts underperform — this audience can feel when the human is missing.</div>
-        <div><strong style="font-size:10px;color:var(--ink)">Action Recommendation</strong><br>Lead with a personal moment or honest observation before delivering the takeaway. Use warm, conversational language — avoid cold statistics as openers. Stories with a soft emotional arc (struggle → realness → grounded conclusion) will perform best. Let the insight arrive naturally, not as a lesson.</div>
-      </div>
-    </div>
-
-    <div class="card hot-topics-card overview-card overview-card--vertical">
-      <div class="ch"><span class="ct section-title">hot topics</span><span class="badge">Trending</span></div>
-      <div class="topic-row">
-        <div class="topic-meta"><span class="topic-icon">🔥</span><span class="topic-copy">Career Reinvention</span></div>
-        <div class="topic-trend">People are questioning traditional career paths and discussing identity loss after layoffs, burnout, or pivots. Emotional tone: anxious but hopeful.</div>
-      </div>
-      <div class="topic-row">
-        <div class="topic-meta"><span class="topic-icon">💬</span><span class="topic-copy">Dating Fatigue</span></div>
-        <div class="topic-trend">Growing frustration with dating apps, emotional burnout, and modern relationship expectations. Dominant sentiment: exhaustion and self-questioning.</div>
-      </div>
-      <div class="topic-row">
-        <div class="topic-meta"><span class="topic-icon">📈</span><span class="topic-copy">Creator Burnout</span></div>
-        <div class="topic-trend">Conversations around content pressure, algorithm fatigue, and the unsustainability of posting culture. Gaining momentum across creator communities.</div>
-      </div>
-      <div class="topic-row">
-        <div class="topic-meta"><span class="topic-icon">🤔</span><span class="topic-copy">Starting Over at 30</span></div>
-        <div class="topic-trend">30s as a reset point is trending — career shifts, late blooming, and unlearning societal timelines. High resonance in women-led spaces.</div>
-      </div>
-      <div class="topic-row">
-        <div class="topic-meta"><span class="topic-icon">✨</span><span class="topic-copy">Self-Worth & Confidence</span></div>
-        <div class="topic-trend">Discussions moving from surface-level affirmations toward earned confidence and emotional resilience. Audience craves substance over hype.</div>
-      </div>
-    </div>
-
-    <div class="card platform-overview-card overview-card overview-card--wide">
-      <div class="ch"><span class="ct section-title">platform overview</span><span class="badge">Account Growth</span></div>
-      <div class="account-grid">
-
-        <!-- @urdategurly -->
-        <div class="account-card">
-          <div>
-            <span class="account-platform account-platform--tg">TikTok</span>
-            <div class="account-name">@urdategurly</div>
-            <div class="account-primary">
-              <span class="account-primary-val">179.1k</span>
-              <span class="account-primary-growth up">↑175%</span>
-              <span class="account-primary-lbl">7-day views</span>
-            </div>
-            <div class="account-metrics">
-              <div class="account-metric-row"><span class="account-metric-key">follower growth</span><span class="account-metric-val">+207 <span class="account-metric-percent up">↑12.8%</span></span></div>
-              <div class="account-metric-row"><span class="account-metric-key">audience engagement</span><span class="account-metric-val">8.4% <span class="account-metric-percent up">↑22%</span></span></div>
-              <div class="account-metric-row"><span class="account-metric-key">traffic source</span><span class="account-metric-val">60.8% FYP</span></div>
-              <div class="account-metric-row"><span class="account-metric-key">profile visits</span><span class="account-metric-val">2.5k</span></div>
-            </div>
-          </div>
-          <div class="account-insight">Emotional resonance drives discovery and shares on primary platform.</div>
-        </div>
-
-        <!-- @itselinkaban -->
-        <div class="account-card">
-          <div>
-            <span class="account-platform account-platform--ek">TikTok Alt</span>
-            <div class="account-name">@itselinkaban</div>
-            <div class="account-primary">
-              <span class="account-primary-val">13.7k</span>
-              <span class="account-primary-growth down">↓8.2%</span>
-              <span class="account-primary-lbl">7-day views</span>
-            </div>
-            <div class="account-metrics">
-              <div class="account-metric-row"><span class="account-metric-key">follower growth</span><span class="account-metric-val">+42 <span class="account-metric-percent down">↓3.2%</span></span></div>
-              <div class="account-metric-row"><span class="account-metric-key">audience engagement</span><span class="account-metric-val">6.5% <span class="account-metric-percent up">↑16%</span></span></div>
-              <div class="account-metric-row"><span class="account-metric-key">traffic source</span><span class="account-metric-val">45% search</span></div>
-              <div class="account-metric-row"><span class="account-metric-key">profile visits</span><span class="account-metric-val">234</span></div>
-            </div>
-          </div>
-          <div class="account-insight">High search discoverability validates niche; follower growth needs content boost.</div>
-        </div>
-
-        <!-- LinkedIn -->
-        <div class="account-card">
-          <div>
-            <span class="account-platform account-platform--li">Professional</span>
-            <div class="account-name">LinkedIn</div>
-            <div class="account-primary">
-              <span class="account-primary-val">42.8k</span>
-              <span class="account-primary-growth up">↑18.4%</span>
-              <span class="account-primary-lbl">Post Impressions (7 Days)</span>
-            </div>
-            <div class="account-metrics">
-              <div class="account-metric-row"><span class="account-metric-key">Follower Growth</span><span class="account-metric-val">+27 <span class="account-metric-percent up">↑6.3%</span></span></div>
-              <div class="account-metric-row"><span class="account-metric-key">Engagement Rate</span><span class="account-metric-val">4.8% <span class="account-metric-percent up">↑0.7%</span></span></div>
-              <div class="account-metric-row"><span class="account-metric-key">Profile Views</span><span class="account-metric-val">325 <span class="account-metric-percent up">↑42%</span></span></div>
-              <div class="account-metric-row"><span class="account-metric-key">Viewer Seniority</span><span class="account-metric-val" style="font-size:12px">Manager (31%)</span></div>
-              <div class="account-metric-row"><span class="account-metric-key">Top Industries</span><span class="account-metric-val" style="font-size:12px">Tech, Marketing, Finance</span></div>
-            </div>
-          </div>
-          <div class="account-insight">High-value professional impressions are converting followers from senior decision makers.</div>
-        </div>
-
-      </div>
-      <div class="platform-summary-row">
-        <div class="platform-summary-box">
-          <div class="audience-energy-analysis-title">Analysis</div>
-          <ul>
-            <li>Urdategurly's growth is being driven by strong FYP distribution and above-average engagement rates, converting visibility into follower growth.</li>
-            <li>Itselinkaban shows healthy search discoverability and audience intent, but limited profile visits and distribution keep growth constrained.</li>
-            <li>LinkedIn's audience composition signals rising professional authority, with manager-level engagement across tech, marketing, and finance audiences.</li>
-          </ul>
-        </div>
-        <div class="platform-summary-box">
-          <div class="recommendation-title">Recommendation</div>
-          <ul>
-            <li>Urdategurly: focus on emotionally resonant storytelling formats that amplify FYP reach and engagement.</li>
-            <li>Itselinkaban: broaden distribution beyond search content to improve profile visits and follower growth.</li>
-            <li>LinkedIn: lean into professional posts that highlight authority for senior decision-maker audiences.</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <div class="card content-opportunities-card overview-card overview-card--vertical">
-      <div class="ch"><span class="ct section-title">content opportunities</span><span class="badge">Content Edge</span></div>
+      <div class="card content-opportunities-card overview-card overview-card--vertical">
+        <div class="ch"><span class="ct section-title">content opportunities</span><span class="badge">Content Edge</span></div>
       <div class="opportunity-row">
         <div class="opp-topic">Career Reinvention</div>
         <div class="opp-gap"><strong>gap</strong>Most creators discuss productivity hacks after a career change.</div>
@@ -785,6 +821,7 @@ body{
         <div class="opp-gap"><strong>gap</strong>Most content either romanticizes or catastrophizes the 30s reset.</div>
         <div class="opp-angle"><strong>angle</strong>Hold the complexity — the grief, the freedom, and the disorientation of realizing no one actually has it figured out.</div>
       </div>
+    </div>
     </div>
   </div>
 </div>
@@ -1333,6 +1370,19 @@ const realityDeptQuotes = ['Finished beats optimized.','Publish first. Refine la
   const quoteEl = document.getElementById('realityQuote');
   if (quoteEl) quoteEl.textContent = realityDeptQuotes[quoteIndex];
 })();
+
+function toggleTikTokMenu(e) {
+  e.stopPropagation();
+  document.getElementById('tiktokDropdown').classList.toggle('open');
+}
+function connectTikTokAccount(handle) {
+  document.getElementById('tiktokDropdown').classList.remove('open');
+  window.location.href = '/api/auth/tiktok?account=' + encodeURIComponent(handle);
+}
+document.addEventListener('click', function() {
+  var d = document.getElementById('tiktokDropdown');
+  if (d) d.classList.remove('open');
+});
 
 function switchView(id, el) {
   document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
